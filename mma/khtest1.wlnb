@@ -1,0 +1,300 @@
+{
+ "cells": [
+  {
+   "kind": 2,
+   "value": "Vlong[l_]:=(re/r)^(l+1)*Gamma[(l+1)/2]/(Sqrt[2]*Gamma[l/2+1]);\r\nVeffl=Hold[V0/nd*Sum[LegendreP[l,Cos[theta]]*Vlong[l]，{l,0,Infinity}]];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753343145010,
+     "endTime": 1753343145175
+    },
+    "executionOrder": 1,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "Vlong[l]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wfrac><w><wrow><w></w><wsup><w></w><wrow><w></w><wb>(</wb><wfrac class=\"script\"><w><w>re</w></w><w><w></w><w><w>r</w></w></w></wfrac><wb>)</wb></wrow><w><wrow><w></w><w>1</w><w>+</w><w>l</w></wrow></w></wsup><w></w><wrow><w></w><w>Gamma</w><wrow><w></w><wb>[</wb><wfrac class=\"script\"><w><wrow><w></w><w>1</w><w>+</w><w>l</w></wrow></w><w><w></w><w><w>2</w></w></w></wfrac><wb>]</wb></wrow></wrow></wrow></w><w><w></w><w><wrow><w></w><wsqrt><w><w>\\</w></w><w></w><w><w>2</w></w></wsqrt><w></w><wrow><w></w><w>Gamma</w><wrow><w></w><wb>[</wb><wrow><w></w><w>1</w><w>+</w><wfrac class=\"script\"><w><w>l</w></w><w><w></w><w><w>2</w></w></w></wfrac></wrow><wb>]</wb></wrow></wrow></wrow></w></w></wfrac></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "((re/r)^(1 + l)*Gamma[(1 + l)/2])/(Sqrt[2]*Gamma[1 + l/2])",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "eba94818-1f59-471e-afd2-ca9188aa59df",
+     "metadata": {
+      "cellLabel": "Out[3]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753343161155,
+     "endTime": 1753343161338
+    },
+    "executionOrder": 3,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "Veffl",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><w>Hold</w><wrow><w></w><wb>[</wb><wfrac><w><wrow><w></w><w>V0</w><w></w><wrow><w></w><w>Sum</w><wrow><w></w><wb>[</wb><wrow><w></w><wrow><w></w><w>LegendreP</w><wrow><w></w><wb>[</wb><wrow><w></w><w>l</w><w>,</w><wrow><w></w><w>Cos</w><wrow><w></w><wb>[</wb><w>theta</w><wb>]</wb></wrow></wrow></wrow><wb>]</wb></wrow></wrow><w></w><wrow><w></w><w>Vlong</w><wrow><w></w><wb>[</wb><w>l</w><wb>]</wb></wrow></wrow><w></w><w>，</w><w></w><wrow><w></w><wb>{</wb><wrow><w></w><w>l</w><w>,</w><w>0</w><w>,</w><w>∞</w></wrow><wb>}</wb></wrow></wrow><wb>]</wb></wrow></wrow></wrow></w><w><w></w><w><w>nd</w></w></w></wfrac><wb>]</wb></wrow></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "Hold[(V0/nd)*Sum[LegendreP[l, Cos[theta]]*Vlong[l]*，*{l, 0, Infinity}]]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "f2a1ff9d-f924-4aa9-b8f0-67a2ba44a8a9",
+     "metadata": {
+      "cellLabel": "Out[5]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753343192820,
+     "endTime": 1753343193002
+    },
+    "executionOrder": 5,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "Sum[LegendreP[l,Cos[theta]]*Vlong[l]，{l,0,2,1}]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<pre><span class=\"wl-message\">Sum::argmu</span>: Sum called with 1 argument; 2 or more arguments are expected.</pre>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "Sum::argmu: Sum called with 1 argument; 2 or more arguments are expected.",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "ec91dfed-27f8-44b7-a9c1-4835fd0eebc3",
+     "metadata": {
+      "cellLabel": "",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><w>Sum</w><wrow><w></w><wb>[</wb><wrow><w></w><wrow><w></w><w>LegendreP</w><wrow><w></w><wb>[</wb><wrow><w></w><w>l</w><w>,</w><wrow><w></w><w>Cos</w><wrow><w></w><wb>[</wb><w>theta</w><wb>]</wb></wrow></wrow></wrow><wb>]</wb></wrow></wrow><w></w><wrow><w></w><w>Vlong</w><wrow><w></w><wb>[</wb><w>l</w><wb>]</wb></wrow></wrow><w></w><w>，</w><w></w><wrow><w></w><wb>{</wb><wrow><w></w><w>l</w><w>,</w><w>0</w><w>,</w><w>2</w><w>,</w><w>1</w></wrow><wb>}</wb></wrow></wrow><wb>]</wb></wrow></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "Sum[LegendreP[l, Cos[theta]]*Vlong[l]*，*{l, 0, 2, 1}]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "6fe385fc-7686-442f-b8b3-7311bbd4229d",
+     "metadata": {
+      "cellLabel": "Out[9]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753343474273,
+     "endTime": 1753343474633
+    },
+    "executionOrder": 9,
+    "success": true
+   }
+  },
+  {
+   "kind": 1,
+   "value": "这里的报错是因为Sum似乎是不能对含参数的进行求和，必须把所有变量都变成数值，这个需要考虑一下，其实无限阶的勒让德级数肯定也得特殊处理一下，不一定就直接用mma嗯算了。",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "LegendreP[l,Cos[theta]]*Vlong[l]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wfrac><w><wrow><w></w><wsup><w></w><wrow><w></w><wb>(</wb><wfrac class=\"script\"><w><w>re</w></w><w><w></w><w><w>r</w></w></w></wfrac><wb>)</wb></wrow><w><wrow><w></w><w>1</w><w>+</w><w>l</w></wrow></w></wsup><w></w><wrow><w></w><w>Gamma</w><wrow><w></w><wb>[</wb><wfrac class=\"script\"><w><wrow><w></w><w>1</w><w>+</w><w>l</w></wrow></w><w><w></w><w><w>2</w></w></w></wfrac><wb>]</wb></wrow></wrow><w></w><wrow><w></w><w>LegendreP</w><wrow><w></w><wb>[</wb><wrow><w></w><w>l</w><w>,</w><wrow><w></w><w>Cos</w><wrow><w></w><wb>[</wb><w>theta</w><wb>]</wb></wrow></wrow></wrow><wb>]</wb></wrow></wrow></wrow></w><w><w></w><w><wrow><w></w><wsqrt><w><w>\\</w></w><w></w><w><w>2</w></w></wsqrt><w></w><wrow><w></w><w>Gamma</w><wrow><w></w><wb>[</wb><wrow><w></w><w>1</w><w>+</w><wfrac class=\"script\"><w><w>l</w></w><w><w></w><w><w>2</w></w></w></wfrac></wrow><wb>]</wb></wrow></wrow></wrow></w></w></wfrac></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "((re/r)^(1 + l)*Gamma[(1 + l)/2]*LegendreP[l, Cos[theta]])/(Sqrt[2]*Gamma[1 + l/2])",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "b359244e-04c2-4430-bdbe-39495569f87d",
+     "metadata": {
+      "cellLabel": "Out[11]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753343514500,
+     "endTime": 1753343514693
+    },
+    "executionOrder": 11,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "Sum[x+1,{x,0,1}]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>3</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "3",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "b27bc044-38f7-418f-bef7-9147d3a339d2",
+     "metadata": {
+      "cellLabel": "Out[10]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753343477511,
+     "endTime": 1753343477713
+    },
+    "executionOrder": 10,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "Sum[LegendreP[l,0.5]，{l,0,2,1}]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<pre><span class=\"wl-message\">Sum::argmu</span>: Sum called with 1 argument; 2 or more arguments are expected.</pre>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "Sum::argmu: Sum called with 1 argument; 2 or more arguments are expected.",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "e365364c-b996-4ea7-9064-ae471c74e9dd",
+     "metadata": {
+      "cellLabel": "",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><w>Sum</w><wrow><w></w><wb>[</wb><wrow><w></w><wrow><w></w><w>LegendreP</w><wrow><w></w><wb>[</wb><wrow><w></w><w>l</w><w>,</w><w>0.5</w></wrow><wb>]</wb></wrow></wrow><w></w><w>，</w><w></w><wrow><w></w><wb>{</wb><wrow><w></w><w>l</w><w>,</w><w>0</w><w>,</w><w>2</w><w>,</w><w>1</w></wrow><wb>}</wb></wrow></wrow><wb>]</wb></wrow></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "Sum[LegendreP[l, 0.5]*，*{l, 0, 2, 1}]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "93de1650-ae80-4f56-9e17-336c625efda1",
+     "metadata": {
+      "cellLabel": "Out[15]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753343799007,
+     "endTime": 1753343799343
+    },
+    "executionOrder": 15,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "LegendreP[l,0.5]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><w>LegendreP</w><wrow><w></w><wb>[</wb><wrow><w></w><w>l</w><w>,</w><w>0.5</w></wrow><wb>]</wb></wrow></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "LegendreP[l, 0.5]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "cdd35a24-12f2-4ce8-ae05-6d008a5d4fe7",
+     "metadata": {
+      "cellLabel": "Out[16]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753343828743,
+     "endTime": 1753343828953
+    },
+    "executionOrder": 16,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}

@@ -1,0 +1,78 @@
+{
+ "cells": [
+  {
+   "kind": 2,
+   "value": "1+1",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>2</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "2",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "bdc34dae-a1b3-481c-82d5-e78befa9dbf8",
+     "metadata": {
+      "cellLabel": "Out[1]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753235476726,
+     "endTime": 1753235476939
+    },
+    "executionOrder": 1,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "Simplify[1/2-3/(213)]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wfrac><w><w>69</w></w><w><w></w><w><w>142</w></w></w></wfrac></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "69/142",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "28324c06-9ccb-4e27-a90c-0856bfbca8d9",
+     "metadata": {
+      "cellLabel": "Out[2]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753235487577,
+     "endTime": 1753235487787
+    },
+    "executionOrder": 2,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}
