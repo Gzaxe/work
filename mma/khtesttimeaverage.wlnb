@@ -110,14 +110,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753685719638,
-     "endTime": 1753685719820
-    },
-    "executionOrder": 35,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -125,14 +118,7 @@
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753685740437,
-     "endTime": 1753685740543
-    },
-    "executionOrder": 36,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -140,14 +126,7 @@
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753685741964,
-     "endTime": 1753685742063
-    },
-    "executionOrder": 37,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -173,14 +152,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753671012299,
-     "endTime": 1753671012509
-    },
-    "executionOrder": 3,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -206,14 +178,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753671134986,
-     "endTime": 1753671135172
-    },
-    "executionOrder": 4,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -239,14 +204,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753671579727,
-     "endTime": 1753671579939
-    },
-    "executionOrder": 9,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -272,14 +230,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753681037451,
-     "endTime": 1753681037646
-    },
-    "executionOrder": 17,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -305,14 +256,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753683386036,
-     "endTime": 1753683386239
-    },
-    "executionOrder": 27,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -338,14 +282,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753685745751,
-     "endTime": 1753685746054
-    },
-    "executionOrder": 38,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -371,14 +308,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753683480601,
-     "endTime": 1753683480903
-    },
-    "executionOrder": 30,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 1,
@@ -412,14 +342,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753684852337,
-     "endTime": 1753684852517
-    },
-    "executionOrder": 31,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -427,14 +350,7 @@
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753685751531,
-     "endTime": 1753685751623
-    },
-    "executionOrder": 39,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -460,14 +376,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753686313740,
-     "endTime": 1753686314066
-    },
-    "executionOrder": 46,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 1,
@@ -501,80 +410,59 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753685615963,
-     "endTime": 1753685616145
-    },
-    "executionOrder": 34,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
-   "value": "10^(-2)*(6.6*10^(-34)/(2*Pi))^2*(1.6*10^(-19))^(-2)",
+   "value": "10^(2)*(6.6*10^(-34)/(2*Pi))^2*(1.6*10^(-19))^(-2)",
    "languageId": "wolfram",
    "outputs": [
     {
      "items": [
       {
-       "data": "<div class=\"wexpr\"><wsup><w></w><w>4.31011&#215;10</w><w><w>-33</w></w></wsup></div>",
+       "data": "<div class=\"wexpr\"><wsup><w></w><w>4.31011&#215;10</w><w><w>-29</w></w></wsup></div>",
        "mime": "x-application/wolfram-language-html"
       },
       {
-       "data": "4.310108163535385*^-33",
+       "data": "4.310108163535385*^-29",
        "mime": "text/plain"
       }
      ],
-     "id": "6b5689a1-f355-4d47-bca3-524e495c08d3",
+     "id": "9f63ddcf-48ba-4a57-ba7d-91ecc6ee2513",
      "metadata": {
-      "cellLabel": "Out[44]= ",
+      "cellLabel": "Out[47]= ",
       "isBoxData": false
      }
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753686274454,
-     "endTime": 1753686274637
-    },
-    "executionOrder": 44,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
-   "value": "1.12941×10^23*4.31011×10^(-33)",
+   "value": "1.12941×10^23*4.31011×10^(-29)",
    "languageId": "wolfram",
    "outputs": [
     {
      "items": [
       {
-       "data": "<div class=\"wexpr\"><wsup><w></w><w>4.86788&#215;10</w><w><w>-10</w></w></wsup></div>",
+       "data": "<div class=\"wexpr\"><wsup><w></w><w>4.86788&#215;10</w><w><w>-6</w></w></wsup></div>",
        "mime": "x-application/wolfram-language-html"
       },
       {
-       "data": "4.8678813351*^-10",
+       "data": "4.8678813351*^-6",
        "mime": "text/plain"
       }
      ],
-     "id": "94aec9c2-0301-43a8-8b82-d34963ef94a5",
+     "id": "c1e29470-60ee-4055-8550-b6e87f42c09e",
      "metadata": {
-      "cellLabel": "Out[45]= ",
+      "cellLabel": "Out[48]= ",
       "isBoxData": false
      }
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753686280716,
-     "endTime": 1753686280883
-    },
-    "executionOrder": 45,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
