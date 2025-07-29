@@ -24,9 +24,9 @@
        "mime": "text/plain"
       }
      ],
-     "id": "d6346bb7-3234-4395-87d2-ba6902ad3369",
+     "id": "64cf0b76-8ed2-4f43-b4cd-1d6c6632ac83",
      "metadata": {
-      "cellLabel": "Out[3]= ",
+      "cellLabel": "Out[4]= ",
       "isBoxData": false
      }
     }
@@ -34,10 +34,10 @@
    "metadata": {},
    "executionSummary": {
     "timing": {
-     "startTime": 1753751853855,
-     "endTime": 1753751854225
+     "startTime": 1753757778373,
+     "endTime": 1753757778687
     },
-    "executionOrder": 1,
+    "executionOrder": 2,
     "success": true
    }
   },
@@ -88,6 +88,73 @@
      "endTime": 1753752308188
     },
     "executionOrder": 15,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "testrkhmv1[r_]=rkhm/.{theta->0,nd->3,rn->4.64,omega->10^{3}}\r\ntestrkhmv2[r_]=rkhm/.{theta->Pi/2,nd->3,rn->4.64,omega->10^{3}}\r\ntestrkhmv3[r_]=rkhm/.{theta->Pi/4,nd->3,rn->4.64,omega->10^{3}}",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wsqrt><w><w>\\</w></w><w></w><w><wrow><w></w><wsup><w></w><w>r</w><w><w>2</w></w></wsup><w>-</w><wrow><w></w><w>27.84</w><w></w><w>r</w><w></w><wrow><w></w><w>Sin</w><wrow><w></w><wb>[</wb><wrow><w></w><w>1000</w><w></w><w>t</w></wrow><wb>]</wb></wrow></wrow></wrow><w>+</w><wrow><w></w><w>193.766</w><w></w><wsup><w></w><wrow><w></w><w>Sin</w><wrow><w></w><wb>[</wb><wrow><w></w><w>1000</w><w></w><w>t</w></wrow><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow></wrow></w></wsqrt><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{Sqrt[r^2 - 27.839999999999996*r*Sin[1000*t] + 193.76639999999998*Sin[1000*t]^2]}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "da9cb3de-e4b2-4ec6-921c-7d900f8bdb5e",
+     "metadata": {
+      "cellLabel": "Out[17]= ",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wsqrt><w><w>\\</w></w><w></w><w><wrow><w></w><wrow><w></w><w>0.</w><w> </w></wrow><w>+</w><wsup><w></w><w>r</w><w><w>2</w></w></wsup><w>+</w><wrow><w></w><w>193.766</w><w></w><wsup><w></w><wrow><w></w><w>Sin</w><wrow><w></w><wb>[</wb><wrow><w></w><w>1000</w><w></w><w>t</w></wrow><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow></wrow></w></wsqrt><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{Sqrt[0. + r^2 + 193.76639999999998*Sin[1000*t]^2]}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "be7d1e0e-da3b-4482-9678-af7f9ca4f5c4",
+     "metadata": {
+      "cellLabel": "Out[18]= ",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wsqrt><w><w>\\</w></w><w></w><w><wrow><w></w><wsup><w></w><w>r</w><w><w>2</w></w></wsup><w>-</w><wrow><w></w><w>19.6859</w><w></w><w>r</w><w></w><wrow><w></w><w>Sin</w><wrow><w></w><wb>[</wb><wrow><w></w><w>1000</w><w></w><w>t</w></wrow><wb>]</wb></wrow></wrow></wrow><w>+</w><wrow><w></w><w>193.766</w><w></w><wsup><w></w><wrow><w></w><w>Sin</w><wrow><w></w><wb>[</wb><wrow><w></w><w>1000</w><w></w><w>t</w></wrow><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow></wrow></w></wsqrt><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{Sqrt[r^2 - 19.68585278823348*r*Sin[1000*t] + 193.76639999999998*Sin[1000*t]^2]}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "f8f3c9c5-0cf5-45cd-b7ca-413ecdfd02c3",
+     "metadata": {
+      "cellLabel": "Out[19]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753767262429,
+     "endTime": 1753767262853
+    },
+    "executionOrder": 17,
     "success": true
    }
   },
@@ -357,9 +424,182 @@
    }
   },
   {
+   "kind": 1,
+   "value": "现在一是要解决为什么会出现负数区域，二是要想想怎么区分两个区间，第三是把数值结果弄出来和文章比一比",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
    "kind": 2,
-   "value": "",
+   "value": "NIntegrate[testrkhm3[10],{t,0,Pi/500},{MaxRecursion->50}]/(Pi/500)-4.64",
    "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><w>6.62703</w><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{6.627030870223618}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "a816f64c-dc16-4768-9070-86002de31109",
+     "metadata": {
+      "cellLabel": "Out[13]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753758203803,
+     "endTime": 1753758204013
+    },
+    "executionOrder": 13,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "NIntegrate[testrkhm3[10],{t,0,Pi/500},{MaxRecursion->50}]/(Pi/500)",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><w>11.267</w><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{11.267030870223618}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "4878ba92-3c89-4772-b225-0268acadc323",
+     "metadata": {
+      "cellLabel": "Out[20]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753778209620,
+     "endTime": 1753778209828
+    },
+    "executionOrder": 20,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "NMinimize[testrkhmv1[18.6],{t,0,Pi/500}]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><w>4.68</w><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><w>t</w><w class=\"symbol\"></w><w>0.120951</w></wrow><wb>}</wb></wrow></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{4.680000000000006, {t -> 0.12095131716320676}}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "d4d6a130-9cb3-4f33-bcff-e6e635142f02",
+     "metadata": {
+      "cellLabel": "Out[37]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753778887017,
+     "endTime": 1753778887225
+    },
+    "executionOrder": 37,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "NMinimize[testrkhmv2[4.6],{t,0,Pi/500}]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><w>4.6</w><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><w>t</w><w class=\"symbol\"></w><wsup><w></w><w>5.09876&#215;10</w><w><w>-321</w></w></wsup></wrow><wb>}</wb></wrow></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{4.6, {t -> 5.1*^-321}}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "7994e3f4-4279-4e91-a33d-feab916a74ca",
+     "metadata": {
+      "cellLabel": "Out[29]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753778814697,
+     "endTime": 1753778814875
+    },
+    "executionOrder": 29,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "NMinimize[testrkhmv3[6.622611098319144],{t,0,Pi/500}]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><w>4.68289</w><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><w>t</w><w class=\"symbol\"></w><w>0.122179</w></wrow><wb>}</wb></wrow></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{4.682893216782757, {t -> 0.12217900635613953}}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "89d055b5-9ce3-4e5e-9c4c-509f7a4d4784",
+     "metadata": {
+      "cellLabel": "Out[33]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753778860773,
+     "endTime": 1753778860961
+    },
+    "executionOrder": 33,
+    "success": true
+   }
+  },
+  {
+   "kind": 1,
+   "value": "从以上可以看出，区分不同区间的办法是判断rKH的最小值是否会进入势阱内部，一旦进入就被是为捕获，时间限定在一个周期内一是为了好算毕竟确实有周期，二是在之后的计算中会忽略周期性直接使用平均值所以只算一个周期够了。",
+   "languageId": "markdown",
    "outputs": [],
    "metadata": {},
    "executionSummary": {}
