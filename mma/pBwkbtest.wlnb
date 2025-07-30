@@ -1,0 +1,101 @@
+{
+ "cells": [
+  {
+   "kind": 1,
+   "value": "验证计算WKB隧穿几率，拿一个标准电磁势场做例子。",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "intpart=Hold[NIntegrate[Sqrt[1/r-1/(rin)],{r,rin,rout}]];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753835089855,
+     "endTime": 1753835089932
+    },
+    "executionOrder": 3,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "nintpart=ReleaseHold[intpart/.{rin->18.6,rout->4.64}]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><w>-</w><w>2.65286</w></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "-2.652858033746367",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "9bc68cb2-e62f-4687-a6f0-c0ac2308986f",
+     "metadata": {
+      "cellLabel": "Out[5]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753835161240,
+     "endTime": 1753835161448
+    },
+    "executionOrder": 5,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "problity=Exp[nintpart]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>0.0704496</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "0.07044957778674182",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "106a7be1-e665-499a-b810-76388b5a9e39",
+     "metadata": {
+      "cellLabel": "Out[7]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753835169034,
+     "endTime": 1753835169236
+    },
+    "executionOrder": 7,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}
