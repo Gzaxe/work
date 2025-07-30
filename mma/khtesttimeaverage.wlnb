@@ -1,6 +1,14 @@
 {
  "cells": [
   {
+   "kind": 1,
+   "value": "本来这个是完整的计算test，现在只单纯用来测试计算I-ω关系，目前问题是pB的结果和文章刚好相差4个数量级，但是DT的结果反而量级上是对的，数值上有百分之20左右的差别但是这个很有可能是因为描点的时候的log转换带来的误差。",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
    "kind": 2,
    "value": "re[t_]=rem*Sin[omega*t];\r\nrkhm=Sqrt[r^2+re[t]^2-2*r*re[t]*Cos[theta]];",
    "languageId": "wolfram",
@@ -126,14 +134,7 @@
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753753896283,
-     "endTime": 1753753896393
-    },
-    "executionOrder": 1,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -159,14 +160,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753754880906,
-     "endTime": 1753754881104
-    },
-    "executionOrder": 16,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -174,14 +168,7 @@
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753754060519,
-     "endTime": 1753754060631
-    },
-    "executionOrder": 8,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 1,
@@ -215,14 +202,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753753901875,
-     "endTime": 1753753908028
-    },
-    "executionOrder": 3,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -248,14 +228,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753753912281,
-     "endTime": 1753753912619
-    },
-    "executionOrder": 4,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -323,14 +296,7 @@
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753754934289,
-     "endTime": 1753754934385
-    },
-    "executionOrder": 17,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -356,14 +322,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753754938941,
-     "endTime": 1753754939276
-    },
-    "executionOrder": 18,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 1,
@@ -578,14 +537,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753754999001,
-     "endTime": 1753754999217
-    },
-    "executionOrder": 19,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -637,14 +589,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753755009476,
-     "endTime": 1753755009687
-    },
-    "executionOrder": 20,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -927,14 +872,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753754086009,
-     "endTime": 1753754086175
-    },
-    "executionOrder": 12,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -960,14 +898,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753755703808,
-     "endTime": 1753755703996
-    },
-    "executionOrder": 26,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -993,14 +924,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753754098320,
-     "endTime": 1753754098533
-    },
-    "executionOrder": 15,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -1026,14 +950,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753754096991,
-     "endTime": 1753754097185
-    },
-    "executionOrder": 14,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 1,
@@ -1067,14 +984,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753755433462,
-     "endTime": 1753755433657
-    },
-    "executionOrder": 23,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -1100,14 +1010,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753755422206,
-     "endTime": 1753755422393
-    },
-    "executionOrder": 22,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -1133,14 +1036,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753755453746,
-     "endTime": 1753755453930
-    },
-    "executionOrder": 24,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -1174,14 +1070,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753755589682,
-     "endTime": 1753755589877
-    },
-    "executionOrder": 25,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,

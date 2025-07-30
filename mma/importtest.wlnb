@@ -1,0 +1,60 @@
+{
+ "cells": [
+  {
+   "kind": 2,
+   "value": "(*测试一下是否能读取wdx文件*)\r\nVre=Import[\"D:\\work\\mma\\data\\Veff-nd3-theta0-pb.wdx\"];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753860396382,
+     "endTime": 1753860396533
+    },
+    "executionOrder": 19,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "Vre[[50]]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><w>98</w><w>,</w><w>0.0741395</w></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{98, 0.07413946989836828}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "58dc1694-9e34-4480-adcb-19fd513f27ad",
+     "metadata": {
+      "cellLabel": "Out[21]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753860411334,
+     "endTime": 1753860411526
+    },
+    "executionOrder": 21,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}

@@ -1,0 +1,275 @@
+{
+ "cells": [
+  {
+   "kind": 1,
+   "value": "这个文档用来检查之前计算I-ω的时候和pB文章的四个数量级的差别。首先来把前面的计算过程弄过来",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "(*I-omega关系式，理论上两个nIl函数就是文章中的形式，输入和输出都该一样*)\r\nIl[omega_]:=(nd*rn*m*(omega*1.53248*10^(15))^2)^2/(2*c0*mu0*q0^2);\r\nnIldt[omega_,nd_]=10^(-4)*Il[omega]/.{rn->3.89*10^(-15),m->1.992*10^(-27),\r\nmu0->4*Pi*10^(-7),c0->2.99*10^8,q0->1.6*10^(-19)/5};",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 1,
+   "value": "首先来check一下DT部分，把参数细节再看一遍，\r\nDT文章数据：\r\n9，5.36*10^(3)，3.37*10^(27)\r\n6，8.46*10^(3)，7.62*10^(27)\r\n3，1.69*10^(4)，3.05*10^(28)",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "nIldt[5.361*10^(3),9]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wsup><w></w><w>2.87948&#215;10</w><w><w>27</w></w></wsup></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "2.879482048803837*^27",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "386f2659-ae57-40a2-ad2f-f193278414fc",
+     "metadata": {
+      "cellLabel": "Out[38]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "nIldt[8.461*10^(3),6]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wsup><w></w><w>7.94027&#215;10</w><w><w>27</w></w></wsup></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "7.940272527082432*^27",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "d9df1636-b79c-469a-ab31-97eabe3bcddd",
+     "metadata": {
+      "cellLabel": "Out[39]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "nIldt[1.691*10^(4),3]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wsup><w></w><w>3.16711&#215;10</w><w><w>28</w></w></wsup></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "3.167109415983092*^28",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "ac7fc0d2-7a2c-44ed-b2d4-9e2d17a0a684",
+     "metadata": {
+      "cellLabel": "Out[40]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 1,
+   "value": "是文章里面没写清楚nd和Iomega之间的对应关系，图的描述和图不一样，烂。这样整体上就是第一个nd=9的结果差别稍微大一些，大概有1/6的误差，别的都是0.03的误差无所谓了，所以这个还是要再看一下，不该有这种差别的啊。",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 1,
+   "value": "下面check氢硼的情况，参数：\r\nnd omega   I\r\n3  10^(3)  5*10^(26)\r\n6  10^(3)  2*10^(27)\r\n9  10^(3)  4.5*10^(27)",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "nIlpb[omega_,nd_]=10^(-4)*Il[omega]/.{rn->4.64*10^(-15),m->(11/12)*1.66*10^(-27),\r\nmu0->4*Pi*10^(-7),c0->2.99*10^8,q0->0.8*10^(-19)};",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "nIlpb[10^(3),9]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wsup><w></w><w>4.60081&#215;10</w><w><w>23</w></w></wsup></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "4.600814629715544*^23",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "651f9f5b-6cad-4c30-b93d-2193f688cc9c",
+     "metadata": {
+      "cellLabel": "Out[31]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "nIldt[10^(3),6]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wsup><w></w><w>1.54935&#215;10</w><w><w>24</w></w></wsup></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "1.5493467603965265*^24",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "827edbec-a10b-4b20-b74a-7ad502fcbc67",
+     "metadata": {
+      "cellLabel": "Out[44]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "nIlpb[10^(3),3]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wsup><w></w><w>5.11202&#215;10</w><w><w>22</w></w></wsup></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "5.112016255239494*^22",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "c51f73f1-e014-4ebc-a270-1cd7c2ae846e",
+     "metadata": {
+      "cellLabel": "Out[32]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "nIlpb[10^(3),6]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wsup><w></w><w>2.04481&#215;10</w><w><w>23</w></w></wsup></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "2.0448065020957976*^23",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "0ac37ede-6832-431f-bb39-8e7353964440",
+     "metadata": {
+      "cellLabel": "Out[33]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "q0*Sqrt[2*c0*mu0]*10^(2)/(rn*m*(1.53248*10^(15))^2)/.{rn->3.89*10^(-15),m->1.992*10^(-27),\r\nmu0->4*Pi*10^(-7),c0->2.99*10^8,q0->1.6*10^(-19)/5}",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wsup><w></w><w>4.82033&#215;10</w><w><w>-6</w></w></wsup></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "4.8203318326052*^-6",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "25480a34-b1ee-48d7-8ef1-abf8f2efad67",
+     "metadata": {
+      "cellLabel": "Out[3]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753855024326,
+     "endTime": 1753855024502
+    },
+    "executionOrder": 3,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}

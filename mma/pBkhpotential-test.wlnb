@@ -16,10 +16,10 @@
    "metadata": {},
    "executionSummary": {
     "timing": {
-     "startTime": 1753779373673,
-     "endTime": 1753779373885
+     "startTime": 1753856803461,
+     "endTime": 1753856803640
     },
-    "executionOrder": 1,
+    "executionOrder": 19,
     "success": true
    }
   },
@@ -39,9 +39,9 @@
        "mime": "text/plain"
       }
      ],
-     "id": "ee2331ae-eb97-4e36-955f-ddb36732e322",
+     "id": "c4e57570-b083-4262-929c-1372c90eb3ab",
      "metadata": {
-      "cellLabel": "Out[3]= ",
+      "cellLabel": "Out[21]= ",
       "isBoxData": false
      }
     },
@@ -56,9 +56,9 @@
        "mime": "text/plain"
       }
      ],
-     "id": "e7146b08-e98c-4e11-a0b0-627b54964bd4",
+     "id": "280568ce-70ba-400b-9427-d29b178ce63a",
      "metadata": {
-      "cellLabel": "Out[4]= ",
+      "cellLabel": "Out[22]= ",
       "isBoxData": false
      }
     },
@@ -73,9 +73,9 @@
        "mime": "text/plain"
       }
      ],
-     "id": "54017841-0b24-400d-a0a8-9b7c336dfc0d",
+     "id": "5f336b10-a4d7-4343-977f-17fb1e60cf43",
      "metadata": {
-      "cellLabel": "Out[5]= ",
+      "cellLabel": "Out[23]= ",
       "isBoxData": false
      }
     }
@@ -83,10 +83,10 @@
    "metadata": {},
    "executionSummary": {
     "timing": {
-     "startTime": 1753779421282,
-     "endTime": 1753779421706
+     "startTime": 1753856806077,
+     "endTime": 1753856806517
     },
-    "executionOrder": 3,
+    "executionOrder": 21,
     "success": true
    }
   },
@@ -204,7 +204,7 @@
   },
   {
    "kind": 2,
-   "value": "NIntegrate[testrkhm[8],{t,0,Pi/500},{MaxRecursion->50}]",
+   "value": "NIntegrate[testrkhm[10],{t,0,Pi/500},{MaxRecursion->50}]",
    "languageId": "wolfram",
    "outputs": [
     {
@@ -218,7 +218,7 @@
        "mime": "text/plain"
       }
      ],
-     "id": "3b2be22a-aa2a-4b70-9f67-6ffdc93bd3fa",
+     "id": "ef2b9213-56ee-425f-ab0c-c867550d03de",
      "metadata": {
       "cellLabel": "",
       "isBoxData": false
@@ -227,15 +227,15 @@
     {
      "items": [
       {
-       "data": "<pre><span class=\"wl-message\">NIntegrate::eincr</span>: \n   The global error of the strategy GlobalAdaptive has increased more than 400\n     times. The global error is expected to decrease monotonically after a\n     number of integrand evaluations. Suspect one of the following: the\n     working precision is insufficient for the specified precision goal; the\n     integrand is highly oscillatory or it is not a (piecewise) smooth\n     function; or the true value of the integral is 0. Increasing the value of\n     the GlobalAdaptive option MaxErrorIncreases might lead to a convergent\n                                                                      -7\n     numerical integration. NIntegrate obtained 0.00688619 - 3.6487 10   I\n     and 0.0000150789 for the integral and error estimates.</pre>",
+       "data": "<pre><span class=\"wl-message\">NIntegrate::eincr</span>: \n   The global error of the strategy GlobalAdaptive has increased more than 400\n     times. The global error is expected to decrease monotonically after a\n     number of integrand evaluations. Suspect one of the following: the\n     working precision is insufficient for the specified precision goal; the\n     integrand is highly oscillatory or it is not a (piecewise) smooth\n     function; or the true value of the integral is 0. Increasing the value of\n     the GlobalAdaptive option MaxErrorIncreases might lead to a convergent\n     numerical integration. NIntegrate obtained 0.00784297 - 0.0000256273 I\n     and 0.0000429079 for the integral and error estimates.</pre>",
        "mime": "x-application/wolfram-language-html"
       },
       {
-       "data": "NIntegrate::eincr: \n   The global error of the strategy GlobalAdaptive has increased more than 400\n     times. The global error is expected to decrease monotonically after a\n     number of integrand evaluations. Suspect one of the following: the\n     working precision is insufficient for the specified precision goal; the\n     integrand is highly oscillatory or it is not a (piecewise) smooth\n     function; or the true value of the integral is 0. Increasing the value of\n     the GlobalAdaptive option MaxErrorIncreases might lead to a convergent\n                                                                      -7\n     numerical integration. NIntegrate obtained 0.00688619 - 3.6487 10   I\n     and 0.0000150789 for the integral and error estimates.",
+       "data": "NIntegrate::eincr: \n   The global error of the strategy GlobalAdaptive has increased more than 400\n     times. The global error is expected to decrease monotonically after a\n     number of integrand evaluations. Suspect one of the following: the\n     working precision is insufficient for the specified precision goal; the\n     integrand is highly oscillatory or it is not a (piecewise) smooth\n     function; or the true value of the integral is 0. Increasing the value of\n     the GlobalAdaptive option MaxErrorIncreases might lead to a convergent\n     numerical integration. NIntegrate obtained 0.00784297 - 0.0000256273 I\n     and 0.0000429079 for the integral and error estimates.",
        "mime": "text/plain"
       }
      ],
-     "id": "2b342ec1-4177-460a-973d-82b63405b9ff",
+     "id": "c33ecaff-1eda-443d-94d5-7ba5ba83f3a4",
      "metadata": {
       "cellLabel": "",
       "isBoxData": false
@@ -244,23 +244,30 @@
     {
      "items": [
       {
-       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><w>0.00688619</w><w> </w></wrow><w>-</w><wrow><w></w><wsup><w></w><w>3.6487&#215;10</w><w><w>-7</w></w></wsup><w></w><w>𝕚</w></wrow></wrow><wb>}</wb></wrow></div>",
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><w>0.00784297</w><w> </w></wrow><w>-</w><wrow><w></w><w>0.0000256273</w><w></w><w>𝕚</w></wrow></wrow><wb>}</wb></wrow></div>",
        "mime": "x-application/wolfram-language-html"
       },
       {
-       "data": "{0.006886186218829333 - 3.6486965346099114*^-7*I}",
+       "data": "{0.007842973946873307 - 0.00002562730046431476*I}",
        "mime": "text/plain"
       }
      ],
-     "id": "37573e7c-5caa-474c-8073-033e5a75c0f0",
+     "id": "a4e2559c-ab4f-4866-9fe2-804ebf86f359",
      "metadata": {
-      "cellLabel": "Out[22]= ",
+      "cellLabel": "Out[24]= ",
       "isBoxData": false
      }
     }
    ],
    "metadata": {},
-   "executionSummary": {}
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753856817591,
+     "endTime": 1753856818134
+    },
+    "executionOrder": 24,
+    "success": true
+   }
   },
   {
    "kind": 2,
@@ -368,7 +375,7 @@
   },
   {
    "kind": 1,
-   "value": "现在一是要解决为什么会出现负数区域，二是要想想怎么区分两个区间，第三是把数值结果弄出来和文章比一比",
+   "value": "上面的负数区间是因为扔掉了小数点后的几位数字，正常的结果是刚好为0，所以没有负数，然后积分积不出来的问题自然是因为存在0点导致的发散。",
    "languageId": "markdown",
    "outputs": [],
    "metadata": {},
@@ -518,14 +525,7 @@
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753779794732,
-     "endTime": 1753779794963
-    },
-    "executionOrder": 10,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -551,14 +551,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753779681174,
-     "endTime": 1753779700727
-    },
-    "executionOrder": 6,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -566,14 +559,7 @@
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753779829644,
-     "endTime": 1753779829760
-    },
-    "executionOrder": 13,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -599,14 +585,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753779867963,
-     "endTime": 1753779868163
-    },
-    "executionOrder": 15,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -632,14 +611,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753779886570,
-     "endTime": 1753779892783
-    },
-    "executionOrder": 16,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 1,
@@ -648,6 +620,120 @@
    "outputs": [],
    "metadata": {},
    "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "(*测试一下积分和omega无关*)\r\nre[t_]=rn*nd*Sin[omega*t];\r\nrkhm=Sqrt[r^2+re[t]^2-2*r*re[t]*Cos[theta]];\r\nVeff=V0*rn/rkhm;\r\nnV[r_,omega_]=(Veff/(2Pi/omega))/.{theta->0,V0->1.55,nd->3,rn->4.64}",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wfrac><w><wrow><w></w><w>1.14464</w><w></w><w>omega</w></wrow></w><w><w></w><w><wsqrt><w><w>\\</w></w><w></w><w><wrow><w></w><wsup><w></w><w>r</w><w><w>2</w></w></wsup><w>-</w><wrow><w></w><w>27.84</w><w></w><w>r</w><w></w><wrow><w></w><w>Sin</w><wrow><w></w><wb>[</wb><wrow><w></w><w>omega</w><w></w><w>t</w></wrow><wb>]</wb></wrow></wrow></wrow><w>+</w><wrow><w></w><w>193.766</w><w></w><wsup><w></w><wrow><w></w><w>Sin</w><wrow><w></w><wb>[</wb><wrow><w></w><w>omega</w><w></w><w>t</w></wrow><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow></wrow></w></wsqrt></w></w></wfrac></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "(1.1446423507169112*omega)/Sqrt[r^2 - 27.839999999999996*r*Sin[omega*t] + 193.76639999999998*Sin[omega*t]^2]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "672e17e3-e5f4-409c-b8a2-1fd516d0bbc0",
+     "metadata": {
+      "cellLabel": "Out[4]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753858722758,
+     "endTime": 1753858723229
+    },
+    "executionOrder": 1,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "nVt[omega_]:=NIntegrate[nV[19,omega],{t,0,2Pi/omega}];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753858723229,
+     "endTime": 1753858723320
+    },
+    "executionOrder": 5,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "nVt[10]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>0.556145</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "0.5561448364007022",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "5db45f10-12cc-4777-9fb0-3ccf6253cd99",
+     "metadata": {
+      "cellLabel": "Out[7]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753858750650,
+     "endTime": 1753858750852
+    },
+    "executionOrder": 7,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "nVt[100]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>0.556145</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "0.5561448364007022",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "c29cf31d-c6e5-48d2-9a79-661e9ee8b4bd",
+     "metadata": {
+      "cellLabel": "Out[8]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753858756609,
+     "endTime": 1753858756788
+    },
+    "executionOrder": 8,
+    "success": true
+   }
   },
   {
    "kind": 2,
