@@ -10,11 +10,18 @@
   },
   {
    "kind": 2,
-   "value": "(*I-omega关系式，理论上两个nIl函数就是文章中的形式，输入和输出都该一样*)\r\nIl[omega_]:=(nd*rn*m*(omega*1.53248*10^(15))^2)^2/(2*c0*mu0*q0^2);\r\nnIldt[omega_,nd_]=10^(-4)*Il[omega]/.{rn->3.89*10^(-15),m->1.992*10^(-27),\r\nmu0->4*Pi*10^(-7),c0->2.99*10^8,q0->1.6*10^(-19)/5};",
+   "value": "(*I-omega关系式，理论上两个nIl函数就是文章中的形式，输入和输出都该一样*)\r\nIl[omega_]:=(nd*rn*m*(omega*1.51859*10^(15))^2)^2/(2*c0*mu0*q0^2);\r\nnIldt[omega_,nd_]=10^(-4)*Il[omega]/.{rn->3.89*10^(-15),m->1.992*10^(-27),\r\nmu0->4*Pi*10^(-7),c0->2.99*10^8,q0->1.6*10^(-19)/5};",
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {}
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753863689418,
+     "endTime": 1753863689573
+    },
+    "executionOrder": 18,
+    "success": true
+   }
   },
   {
    "kind": 1,
@@ -32,23 +39,30 @@
     {
      "items": [
       {
-       "data": "<div class=\"wexpr\"><wsup><w></w><w>2.87948&#215;10</w><w><w>27</w></w></wsup></div>",
+       "data": "<div class=\"wexpr\"><wsup><w></w><w>2.7765&#215;10</w><w><w>27</w></w></wsup></div>",
        "mime": "x-application/wolfram-language-html"
       },
       {
-       "data": "2.879482048803837*^27",
+       "data": "2.7764973081064755*^27",
        "mime": "text/plain"
       }
      ],
-     "id": "386f2659-ae57-40a2-ad2f-f193278414fc",
+     "id": "ca1731d9-51c7-42db-a72f-c68e310a3578",
      "metadata": {
-      "cellLabel": "Out[38]= ",
+      "cellLabel": "Out[20]= ",
       "isBoxData": false
      }
     }
    ],
    "metadata": {},
-   "executionSummary": {}
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753863692533,
+     "endTime": 1753863692704
+    },
+    "executionOrder": 20,
+    "success": true
+   }
   },
   {
    "kind": 2,
@@ -58,23 +72,30 @@
     {
      "items": [
       {
-       "data": "<div class=\"wexpr\"><wsup><w></w><w>7.94027&#215;10</w><w><w>27</w></w></wsup></div>",
+       "data": "<div class=\"wexpr\"><wsup><w></w><w>7.65629&#215;10</w><w><w>27</w></w></wsup></div>",
        "mime": "x-application/wolfram-language-html"
       },
       {
-       "data": "7.940272527082432*^27",
+       "data": "7.656288500299677*^27",
        "mime": "text/plain"
       }
      ],
-     "id": "d9df1636-b79c-469a-ab31-97eabe3bcddd",
+     "id": "f10b47b5-2605-40b5-b509-24c21620fb26",
      "metadata": {
-      "cellLabel": "Out[39]= ",
+      "cellLabel": "Out[21]= ",
       "isBoxData": false
      }
     }
    ],
    "metadata": {},
-   "executionSummary": {}
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753863696054,
+     "endTime": 1753863696262
+    },
+    "executionOrder": 21,
+    "success": true
+   }
   },
   {
    "kind": 2,
@@ -84,23 +105,30 @@
     {
      "items": [
       {
-       "data": "<div class=\"wexpr\"><wsup><w></w><w>3.16711&#215;10</w><w><w>28</w></w></wsup></div>",
+       "data": "<div class=\"wexpr\"><wsup><w></w><w>3.05384&#215;10</w><w><w>28</w></w></wsup></div>",
        "mime": "x-application/wolfram-language-html"
       },
       {
-       "data": "3.167109415983092*^28",
+       "data": "3.0538376759836416*^28",
        "mime": "text/plain"
       }
      ],
-     "id": "ac7fc0d2-7a2c-44ed-b2d4-9e2d17a0a684",
+     "id": "9df12642-eb25-474b-947c-2b076714919a",
      "metadata": {
-      "cellLabel": "Out[40]= ",
+      "cellLabel": "Out[22]= ",
       "isBoxData": false
      }
     }
    ],
    "metadata": {},
-   "executionSummary": {}
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753863698162,
+     "endTime": 1753863698353
+    },
+    "executionOrder": 22,
+    "success": true
+   }
   },
   {
    "kind": 1,
@@ -124,7 +152,14 @@
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {}
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753863720091,
+     "endTime": 1753863720193
+    },
+    "executionOrder": 23,
+    "success": true
+   }
   },
   {
    "kind": 2,
@@ -134,23 +169,30 @@
     {
      "items": [
       {
-       "data": "<div class=\"wexpr\"><wsup><w></w><w>4.60081&#215;10</w><w><w>23</w></w></wsup></div>",
+       "data": "<div class=\"wexpr\"><wsup><w></w><w>4.4651&#215;10</w><w><w>23</w></w></wsup></div>",
        "mime": "x-application/wolfram-language-html"
       },
       {
-       "data": "4.600814629715544*^23",
+       "data": "4.4650996435594843*^23",
        "mime": "text/plain"
       }
      ],
-     "id": "651f9f5b-6cad-4c30-b93d-2193f688cc9c",
+     "id": "50e80129-ba69-43b6-b24a-c754658fa3ae",
      "metadata": {
-      "cellLabel": "Out[31]= ",
+      "cellLabel": "Out[24]= ",
       "isBoxData": false
      }
     }
    ],
    "metadata": {},
-   "executionSummary": {}
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753863723239,
+     "endTime": 1753863723421
+    },
+    "executionOrder": 24,
+    "success": true
+   }
   },
   {
    "kind": 2,
@@ -160,23 +202,30 @@
     {
      "items": [
       {
-       "data": "<div class=\"wexpr\"><wsup><w></w><w>1.54935&#215;10</w><w><w>24</w></w></wsup></div>",
+       "data": "<div class=\"wexpr\"><wsup><w></w><w>1.49393&#215;10</w><w><w>24</w></w></wsup></div>",
        "mime": "x-application/wolfram-language-html"
       },
       {
-       "data": "1.5493467603965265*^24",
+       "data": "1.4939343384173667*^24",
        "mime": "text/plain"
       }
      ],
-     "id": "827edbec-a10b-4b20-b74a-7ad502fcbc67",
+     "id": "a0e2ab8e-2ad3-48bf-ae3e-29b13226be88",
      "metadata": {
-      "cellLabel": "Out[44]= ",
+      "cellLabel": "Out[25]= ",
       "isBoxData": false
      }
     }
    ],
    "metadata": {},
-   "executionSummary": {}
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753863725970,
+     "endTime": 1753863726145
+    },
+    "executionOrder": 25,
+    "success": true
+   }
   },
   {
    "kind": 2,
@@ -186,23 +235,30 @@
     {
      "items": [
       {
-       "data": "<div class=\"wexpr\"><wsup><w></w><w>5.11202&#215;10</w><w><w>22</w></w></wsup></div>",
+       "data": "<div class=\"wexpr\"><wsup><w></w><w>4.96122&#215;10</w><w><w>22</w></w></wsup></div>",
        "mime": "x-application/wolfram-language-html"
       },
       {
-       "data": "5.112016255239494*^22",
+       "data": "4.9612218261772045*^22",
        "mime": "text/plain"
       }
      ],
-     "id": "c51f73f1-e014-4ebc-a270-1cd7c2ae846e",
+     "id": "6ada4809-a7d5-47d3-bbef-cc85c5627215",
      "metadata": {
-      "cellLabel": "Out[32]= ",
+      "cellLabel": "Out[26]= ",
       "isBoxData": false
      }
     }
    ],
    "metadata": {},
-   "executionSummary": {}
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753863727931,
+     "endTime": 1753863728149
+    },
+    "executionOrder": 26,
+    "success": true
+   }
   },
   {
    "kind": 2,
@@ -212,23 +268,30 @@
     {
      "items": [
       {
-       "data": "<div class=\"wexpr\"><wsup><w></w><w>2.04481&#215;10</w><w><w>23</w></w></wsup></div>",
+       "data": "<div class=\"wexpr\"><wsup><w></w><w>1.98449&#215;10</w><w><w>23</w></w></wsup></div>",
        "mime": "x-application/wolfram-language-html"
       },
       {
-       "data": "2.0448065020957976*^23",
+       "data": "1.9844887304708818*^23",
        "mime": "text/plain"
       }
      ],
-     "id": "0ac37ede-6832-431f-bb39-8e7353964440",
+     "id": "1c736b13-5733-4653-8765-d2f4d8c62ee7",
      "metadata": {
-      "cellLabel": "Out[33]= ",
+      "cellLabel": "Out[27]= ",
       "isBoxData": false
      }
     }
    ],
    "metadata": {},
-   "executionSummary": {}
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753863730289,
+     "endTime": 1753863730479
+    },
+    "executionOrder": 27,
+    "success": true
+   }
   },
   {
    "kind": 2,

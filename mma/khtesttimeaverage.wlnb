@@ -130,7 +130,7 @@
   },
   {
    "kind": 2,
-   "value": "Il[omega_]:=(nd*rn*m*(omega*1.52*10^(15))^2)^2/(2*c0*mu0*q0^2);",
+   "value": "Il[omega_]:=(nd*rn*m*(omega*1.51859*10^(15))^2)^2/(2*c0*mu0*q0^2);",
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
@@ -138,29 +138,36 @@
   },
   {
    "kind": 2,
-   "value": "1.6*2*Pi*10^(34-19)/6.56",
+   "value": "1.6*2*Pi*10^(34-19)/6.62",
    "languageId": "wolfram",
    "outputs": [
     {
      "items": [
       {
-       "data": "<div class=\"wexpr\"><wsup><w></w><w>1.53248&#215;10</w><w><w>15</w></w></wsup></div>",
+       "data": "<div class=\"wexpr\"><wsup><w></w><w>1.51859&#215;10</w><w><w>15</w></w></wsup></div>",
        "mime": "x-application/wolfram-language-html"
       },
       {
-       "data": "1.5324842212633138*^15",
+       "data": "1.518594636176335*^15",
        "mime": "text/plain"
       }
      ],
-     "id": "a523a869-ff64-4e9a-b73f-6836e2e2c136",
+     "id": "fa5c7323-38b5-46ca-bdb8-d03a5c16ea60",
      "metadata": {
-      "cellLabel": "Out[16]= ",
+      "cellLabel": "Out[17]= ",
       "isBoxData": false
      }
     }
    ],
    "metadata": {},
-   "executionSummary": {}
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753863659966,
+     "endTime": 1753863660159
+    },
+    "executionOrder": 17,
+    "success": true
+   }
   },
   {
    "kind": 2,

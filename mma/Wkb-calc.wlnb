@@ -1,0 +1,340 @@
+{
+ "cells": [
+  {
+   "kind": 2,
+   "value": "Vre0=Import[\"D:\\work\\mma\\data\\Veff-nd3-theta0-pb.wdx\"];\r\nVrepi4=Import[\"D:\\work\\mma\\data\\Veff-nd3-thetapi4-pb.wdx\"];\r\nVrepi2=Import[\"D:\\work\\mma\\data\\Veff-nd3-thetapi2-pb.wdx\"];\r\nVf0[x_]=10^(3)*Interpolation[Vre0][x];\r\nVfpi4[x_]=10^(3)*Interpolation[Vrepi4][x];\r\nVfpi2[x_]=10^(3)*Interpolation[Vrepi2][x];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753862326483,
+     "endTime": 1753862327420
+    },
+    "executionOrder": 1,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "(*首先要解出rout，rin就是rmin对不同场，乘了1000之后就是keV了*)\r\nFindRoot[Vf0[x]-148==0,{x,18.6,100}]\r\nFindRoot[Vfpi4[y]-148==0,{y,7,100}]\r\nFindRoot[Vfpi2[z]-148==0,{z,4.7,100}]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><w>x</w><w class=\"symbol\"></w><w>50.5489</w></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{x -> 50.54891487492404}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "a9d7ecf4-465c-48eb-b5f7-f9645232e1c0",
+     "metadata": {
+      "cellLabel": "Out[10]= ",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><w>y</w><w class=\"symbol\"></w><w>49.0349</w></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{y -> 49.0349399079398}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "6262c917-8dd9-4b57-9b25-24bdd35048e6",
+     "metadata": {
+      "cellLabel": "Out[11]= ",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><w>z</w><w class=\"symbol\"></w><w>47.6029</w></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{z -> 47.60291703992188}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "9c7bdd3a-6d52-463b-9140-7607403c963a",
+     "metadata": {
+      "cellLabel": "Out[12]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753862659220,
+     "endTime": 1753862659675
+    },
+    "executionOrder": 10,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "(*之后想算All theta的话还需要想想法子自动算这两个r，也得把他们两个放起来，现在先算了吧*)",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "intpart0=\r\nNIntegrate[Sqrt[Vf0[r]-148],\r\n{r,18.6,50.5489}];\r\nintpartpi4=\r\nNIntegrate[Sqrt[Vfpi4[r]-148],\r\n{r,7,49.0349}];\r\nintpartpi2=\r\nNIntegrate[Sqrt[Vfpi2[r]-148],\r\n{r,4.7,47.6029}];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753863294109,
+     "endTime": 1753863294322
+    },
+    "executionOrder": 14,
+    "success": true
+   }
+  },
+  {
+   "kind": 1,
+   "value": "这里要再看看单位怎么取，全部用keV",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "m=(11/12)*931.494*10^(3);\r\nhbar=6.62*10^(-34)/(2*Pi*1.6*10^(-19+3));",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753864403000,
+     "endTime": 1753864403184
+    },
+    "executionOrder": 28,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "problity0=Exp[-2/(hbar)*Sqrt[2*m]*intpart0];\r\nproblitypi4=Exp[-2/(hbar)*Sqrt[2*m]*intpartpi4];\r\nproblitypi2=Exp[-2/(hbar)*Sqrt[2*m]*intpartpi2];",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<pre><span class=\"wl-message\">General::munfl</span>: \n                  24\n   Exp[-1.20154 10  ] is too small to represent as a normalized machine\n     number; precision may be lost.</pre>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "General::munfl: \n                  24\n   Exp[-1.20154 10  ] is too small to represent as a normalized machine\n     number; precision may be lost.",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "7b0524f5-9971-435a-a9fb-83175ad450a4",
+     "metadata": {
+      "cellLabel": "",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<pre><span class=\"wl-message\">General::munfl</span>: \n                 24\n   Exp[-1.9401 10  ] is too small to represent as a normalized machine number;\n     precision may be lost.</pre>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "General::munfl: \n                 24\n   Exp[-1.9401 10  ] is too small to represent as a normalized machine number;\n     precision may be lost.",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "6d78ae79-2009-4148-a151-0c6cdf972c81",
+     "metadata": {
+      "cellLabel": "",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<pre><span class=\"wl-message\">General::munfl</span>: \n                  24\n   Exp[-1.93596 10  ] is too small to represent as a normalized machine\n     number; precision may be lost.</pre>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "General::munfl: \n                  24\n   Exp[-1.93596 10  ] is too small to represent as a normalized machine\n     number; precision may be lost.",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "b32c5cda-01c8-4062-8f68-c6e2d2e53997",
+     "metadata": {
+      "cellLabel": "",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753864469838,
+     "endTime": 1753864470328
+    },
+    "executionOrder": 30,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "-2/(hbar)*Sqrt[2*m]*intpart0",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><w>-</w><wsup><w></w><w>1.20154&#215;10</w><w><w>24</w></w></wsup></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "-1.2015408871205352*^24",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "ed2e1c6b-75a2-4320-8fa4-c8db27a7ebff",
+     "metadata": {
+      "cellLabel": "Out[33]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753864539052,
+     "endTime": 1753864539258
+    },
+    "executionOrder": 33,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "N[Exp[-1]]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>0.367879</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "0.36787944117144233",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "135eaf17-b78b-4bd3-b8f9-a66892dca5ab",
+     "metadata": {
+      "cellLabel": "Out[36]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753864580452,
+     "endTime": 1753864580627
+    },
+    "executionOrder": 36,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "intpart0\r\nintpartpi4\r\nintpartpi2",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>302.73</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "302.73033983190254",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "80a2769e-8de0-4d5b-b1d7-d7b0060ac94a",
+     "metadata": {
+      "cellLabel": "Out[37]= ",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>488.811</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "488.8109374380361",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "78fcd71a-5045-499a-8f0a-efce5ae81c4a",
+     "metadata": {
+      "cellLabel": "Out[38]= ",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>487.768</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "487.76768229957713",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "2c90f916-8502-481d-a31f-f3361aef86f0",
+     "metadata": {
+      "cellLabel": "Out[39]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753865177805,
+     "endTime": 1753865178259
+    },
+    "executionOrder": 37,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}
