@@ -1,0 +1,124 @@
+{
+ "cells": [
+  {
+   "kind": 1,
+   "value": "这个文件用来计算不同theta和r下的对应的rin，mma不方便写循环，换成C或者python好了，先勉强用一下试试，感觉还是不行，因为要先判断，所以还是把python，C弄好吧",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "re[x_]=rn*nd*x;(*x->Sin[omega*t]*)\r\nrkhm=Sqrt[r^2+re[x]^2-2*r*re[x]*Cos[theta]];\r\nnrkhm[r_,theta_]=rkhm/.{nd->3,rn->4.64};",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753942627678,
+     "endTime": 1753942627981
+    },
+    "executionOrder": 24,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "nrkhm[r,theta]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wsqrt><w><w>\\</w></w><w></w><w><wrow><w></w><wsup><w></w><w>r</w><w><w>2</w></w></wsup><w>+</w><wrow><w></w><w>193.766</w><w></w><wsup><w></w><w>x</w><w><w>2</w></w></wsup></wrow><w>-</w><wrow><w></w><w>27.84</w><w></w><w>r</w><w></w><w>x</w><w></w><wrow><w></w><w>Cos</w><wrow><w></w><wb>[</wb><w>theta</w><wb>]</wb></wrow></wrow></wrow></wrow></w></wsqrt></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "Sqrt[r^2 + 193.76639999999998*x^2 - 27.839999999999996*r*x*Cos[theta]]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "7de0b3dd-b66e-42dd-a52c-0770690b13af",
+     "metadata": {
+      "cellLabel": "Out[27]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753942630144,
+     "endTime": 1753942630329
+    },
+    "executionOrder": 27,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "rkhm",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wsqrt><w><w>\\</w></w><w></w><w><wrow><w></w><wsup><w></w><w>r</w><w><w>2</w></w></wsup><w>+</w><wrow><w></w><wsup><w></w><w>nd</w><w><w>2</w></w></wsup><w></w><wsup><w></w><w>rn</w><w><w>2</w></w></wsup><w></w><wsup><w></w><w>x</w><w><w>2</w></w></wsup></wrow><w>-</w><wrow><w></w><w>2</w><w></w><w>nd</w><w></w><w>r</w><w></w><w>rn</w><w></w><w>x</w><w></w><wrow><w></w><w>Cos</w><wrow><w></w><wb>[</wb><w>theta</w><wb>]</wb></wrow></wrow></wrow></wrow></w></wsqrt></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "Sqrt[r^2 + nd^2*rn^2*x^2 - 2*nd*r*rn*x*Cos[theta]]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "1bb7ba30-4551-4dec-b3e8-50593e0bb596",
+     "metadata": {
+      "cellLabel": "Out[28]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1753943059095,
+     "endTime": 1753943059271
+    },
+    "executionOrder": 28,
+    "success": true
+   }
+  },
+  {
+   "kind": 1,
+   "value": "首先对theta从pi/2分开，先算正的部分。",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "thetalist1=Range[0,Pi/2,Pi/30];\r\nthetalist2=Range[Pi/2+Pi/30,Pi,Pi/30];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1754006332056,
+     "endTime": 1754006332254
+    },
+    "executionOrder": 29,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}

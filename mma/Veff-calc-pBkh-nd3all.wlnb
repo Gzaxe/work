@@ -1,0 +1,28 @@
+{
+ "cells": [
+  {
+   "kind": 1,
+   "value": "这个是计算nd=3的完整的Veff的程序。",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "(*x=omega*t*)\r\nre[x_]=rn*nd*Sin[x];\r\nrkhm=Sqrt[r^2+re[x]^2-2*r*re[x]*Cos[theta]];\r\nVeff=V0*rn/rkhm;\r\nnV[r_,theta_]=(Veff/(2Pi))/.{V0->1.55,nd->3,rn->4.64};\r\nintV1[r_,theta_]:=NIntegrate[nV1[r,theta],{x,0,2Pi}];\r\n(*然后下面的正式积分里面需要把rin随theta的变化考虑进来*)",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}

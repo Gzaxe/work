@@ -2,7 +2,7 @@
  "cells": [
   {
    "kind": 1,
-   "value": "这个文档用来检查之前计算I-ω的时候和pB文章的四个数量级的差别。首先来把前面的计算过程弄过来",
+   "value": "这个文档用来检查之前计算I-ω的时候和pB文章的四个数量级的差别。首先来把前面的计算过程弄过来\r\n差别是因为我把10keV写成10^(3)eV了。",
    "languageId": "markdown",
    "outputs": [],
    "metadata": {},
@@ -16,10 +16,10 @@
    "metadata": {},
    "executionSummary": {
     "timing": {
-     "startTime": 1753863689418,
-     "endTime": 1753863689573
+     "startTime": 1753941102572,
+     "endTime": 1753941102744
     },
-    "executionOrder": 18,
+    "executionOrder": 1,
     "success": true
    }
   },
@@ -47,9 +47,9 @@
        "mime": "text/plain"
       }
      ],
-     "id": "ca1731d9-51c7-42db-a72f-c68e310a3578",
+     "id": "a05224ed-6f16-4389-84b4-dcee583ff319",
      "metadata": {
-      "cellLabel": "Out[20]= ",
+      "cellLabel": "Out[3]= ",
       "isBoxData": false
      }
     }
@@ -57,10 +57,10 @@
    "metadata": {},
    "executionSummary": {
     "timing": {
-     "startTime": 1753863692533,
-     "endTime": 1753863692704
+     "startTime": 1753941107364,
+     "endTime": 1753941107533
     },
-    "executionOrder": 20,
+    "executionOrder": 3,
     "success": true
    }
   },
@@ -88,14 +88,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753863696054,
-     "endTime": 1753863696262
-    },
-    "executionOrder": 21,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -121,14 +114,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753863698162,
-     "endTime": 1753863698353
-    },
-    "executionOrder": 22,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 1,
@@ -140,7 +126,7 @@
   },
   {
    "kind": 1,
-   "value": "下面check氢硼的情况，参数：\r\nnd omega   I\r\n3  10^(3)  5*10^(26)\r\n6  10^(3)  2*10^(27)\r\n9  10^(3)  4.5*10^(27)",
+   "value": "下面check氢硼的情况，参数：\r\nnd omega   I\r\n3  10^(4)  5*10^(26)\r\n6  10^(4)  2*10^(27)\r\n9  10^(4)  4.5*10^(27)",
    "languageId": "markdown",
    "outputs": [],
    "metadata": {},
@@ -154,32 +140,32 @@
    "metadata": {},
    "executionSummary": {
     "timing": {
-     "startTime": 1753863720091,
-     "endTime": 1753863720193
+     "startTime": 1753941111017,
+     "endTime": 1753941111117
     },
-    "executionOrder": 23,
+    "executionOrder": 4,
     "success": true
    }
   },
   {
    "kind": 2,
-   "value": "nIlpb[10^(3),9]",
+   "value": "nIlpb[10^(4),9]",
    "languageId": "wolfram",
    "outputs": [
     {
      "items": [
       {
-       "data": "<div class=\"wexpr\"><wsup><w></w><w>4.4651&#215;10</w><w><w>23</w></w></wsup></div>",
+       "data": "<div class=\"wexpr\"><wsup><w></w><w>4.4651&#215;10</w><w><w>27</w></w></wsup></div>",
        "mime": "x-application/wolfram-language-html"
       },
       {
-       "data": "4.4650996435594843*^23",
+       "data": "4.4650996435594845*^27",
        "mime": "text/plain"
       }
      ],
-     "id": "50e80129-ba69-43b6-b24a-c754658fa3ae",
+     "id": "77f12378-c06f-4489-b5b8-67606da060c4",
      "metadata": {
-      "cellLabel": "Out[24]= ",
+      "cellLabel": "Out[5]= ",
       "isBoxData": false
      }
     }
@@ -187,16 +173,16 @@
    "metadata": {},
    "executionSummary": {
     "timing": {
-     "startTime": 1753863723239,
-     "endTime": 1753863723421
+     "startTime": 1753941112836,
+     "endTime": 1753941113044
     },
-    "executionOrder": 24,
+    "executionOrder": 5,
     "success": true
    }
   },
   {
    "kind": 2,
-   "value": "nIldt[10^(3),6]",
+   "value": "nIldt[10^(4),6]",
    "languageId": "wolfram",
    "outputs": [
     {
@@ -218,34 +204,27 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753863725970,
-     "endTime": 1753863726145
-    },
-    "executionOrder": 25,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
-   "value": "nIlpb[10^(3),3]",
+   "value": "nIlpb[10^(4),3]",
    "languageId": "wolfram",
    "outputs": [
     {
      "items": [
       {
-       "data": "<div class=\"wexpr\"><wsup><w></w><w>4.96122&#215;10</w><w><w>22</w></w></wsup></div>",
+       "data": "<div class=\"wexpr\"><wsup><w></w><w>4.96122&#215;10</w><w><w>26</w></w></wsup></div>",
        "mime": "x-application/wolfram-language-html"
       },
       {
-       "data": "4.9612218261772045*^22",
+       "data": "4.961221826177205*^26",
        "mime": "text/plain"
       }
      ],
-     "id": "6ada4809-a7d5-47d3-bbef-cc85c5627215",
+     "id": "2e761e19-1550-4a07-9014-5fc403ee618c",
      "metadata": {
-      "cellLabel": "Out[26]= ",
+      "cellLabel": "Out[6]= ",
       "isBoxData": false
      }
     }
@@ -253,32 +232,32 @@
    "metadata": {},
    "executionSummary": {
     "timing": {
-     "startTime": 1753863727931,
-     "endTime": 1753863728149
+     "startTime": 1753941118695,
+     "endTime": 1753941118888
     },
-    "executionOrder": 26,
+    "executionOrder": 6,
     "success": true
    }
   },
   {
    "kind": 2,
-   "value": "nIlpb[10^(3),6]",
+   "value": "nIlpb[10^(4),6]",
    "languageId": "wolfram",
    "outputs": [
     {
      "items": [
       {
-       "data": "<div class=\"wexpr\"><wsup><w></w><w>1.98449&#215;10</w><w><w>23</w></w></wsup></div>",
+       "data": "<div class=\"wexpr\"><wsup><w></w><w>1.98449&#215;10</w><w><w>27</w></w></wsup></div>",
        "mime": "x-application/wolfram-language-html"
       },
       {
-       "data": "1.9844887304708818*^23",
+       "data": "1.984488730470882*^27",
        "mime": "text/plain"
       }
      ],
-     "id": "1c736b13-5733-4653-8765-d2f4d8c62ee7",
+     "id": "dee21755-0013-48df-bfd5-f50f364b16c3",
      "metadata": {
-      "cellLabel": "Out[27]= ",
+      "cellLabel": "Out[8]= ",
       "isBoxData": false
      }
     }
@@ -286,10 +265,10 @@
    "metadata": {},
    "executionSummary": {
     "timing": {
-     "startTime": 1753863730289,
-     "endTime": 1753863730479
+     "startTime": 1753941353131,
+     "endTime": 1753941353337
     },
-    "executionOrder": 27,
+    "executionOrder": 8,
     "success": true
    }
   },
@@ -317,14 +296,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753855024326,
-     "endTime": 1753855024502
-    },
-    "executionOrder": 3,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,

@@ -1,19 +1,20 @@
 {
  "cells": [
   {
+   "kind": 1,
+   "value": "这个文件是之前按照不同角度计算Veff的，命名上不太对应。懒得改了",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
    "kind": 2,
    "value": "(*x=omega*t*)\r\nre[x_]=rn*nd*Sin[x];\r\nrkhm=Sqrt[r^2+re[x]^2-2*r*re[x]*Cos[theta]];\r\nVeff=V0*rn/rkhm;",
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753860838929,
-     "endTime": 1753860839134
-    },
-    "executionOrder": 1,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -21,14 +22,7 @@
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753860839134,
-     "endTime": 1753860839420
-    },
-    "executionOrder": 4,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -36,14 +30,7 @@
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753860839420,
-     "endTime": 1753860839540
-    },
-    "executionOrder": 7,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -51,14 +38,7 @@
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753860839540,
-     "endTime": 1753860839811
-    },
-    "executionOrder": 8,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -66,14 +46,7 @@
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753860839812,
-     "endTime": 1753860869197
-    },
-    "executionOrder": 11,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -81,14 +54,7 @@
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753860869197,
-     "endTime": 1753860869302
-    },
-    "executionOrder": 14,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -148,14 +114,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753860869303,
-     "endTime": 1753860870613
-    },
-    "executionOrder": 15,
-    "success": true
-   }
+   "executionSummary": {}
   }
  ]
 }
