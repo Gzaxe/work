@@ -1,0 +1,54 @@
+{
+ "cells": [
+  {
+   "kind": 1,
+   "value": "这里用来计算角度积分之后的wkb",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "problityre=Import[\"D:\\work\\liujie-laserenhance\\data\\KH\\WKBjilv-nd3-pb.wdx\"];\r\nplf=Interpolation[problityre];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "1/2*NIntegrate[plf[x]*Sin[x],{x,0,Pi}]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>0.00216576</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "0.002165757404718875",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "8199aa99-3532-4184-9646-39343ec1092e",
+     "metadata": {
+      "cellLabel": "Out[32]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}

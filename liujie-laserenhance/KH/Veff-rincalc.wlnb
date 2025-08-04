@@ -10,84 +10,71 @@
   },
   {
    "kind": 2,
-   "value": "re[x_]=rn*nd*x;(*x->Sin[omega*t]*)\r\nrkhm=Sqrt[r^2+re[x]^2-2*r*re[x]*Cos[theta]];\r\nnrkhm[r_,theta_]=rkhm/.{nd->3,rn->4.64};",
+   "value": "re[x_]=rn*nd*x;(*x->Sin[omega*t]*)\r\nrkhm[r_,theta_]=Sqrt[r^2+re[x]^2-2*r*re[x]*Cos[theta]];\r\nrkhmmin1[r_,theta_]=rkhm[r,theta]/.{x->(r*Cos[theta]/(nd*rn))};\r\nrkhmmin0pos[r_,theta_]=rkhm[r,theta]/.{x->1};\r\nrkhmmin0neg[r_,theta_]=rkhm[r,theta]/.{x->-1};\r\nnrkhm[r_,theta_]=rkhm[r,theta]/.{nd->3,rn->4.64};\r\nnrkhmcompare[theta_,x_]=\r\nrkhm[(nd*rn)/Abs[Cos[theta]],theta]/.{nd->3,rn->4.64};\r\nnrkhmmin1[r_,theta_]=rkhmmin1[r,theta]/.{nd->3,rn->4.64};\r\nnrkhmmin0pos[r_,theta_]=rkhmmin0pos[r,theta]/.{nd->3,rn->4.64};\r\nnrkhmmin0neg[r_,theta_]=rkhmmin0neg[r,theta]/.{nd->3,rn->4.64};",
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753942627678,
-     "endTime": 1753942627981
-    },
-    "executionOrder": 24,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
-   "value": "nrkhm[r,theta]",
+   "value": "rkhminfdpos[theta_,compre_]=\r\nPiecewise[{{nrkhmmin1[r,theta],compre>(1/2)},\r\n{nrkhmmin0pos[r,theta],compre<(1/2)}}];\r\nrkhminfdneg[theta_,compre_]=\r\nPiecewise[{{nrkhmmin1[r,theta],compre>(1/2)},\r\n{nrkhmmin0neg[r,theta],compre<(1/2)}}];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "nrkhmcompare[theta,x]",
    "languageId": "wolfram",
    "outputs": [
     {
      "items": [
       {
-       "data": "<div class=\"wexpr\"><wsqrt><w><w>\\</w></w><w></w><w><wrow><w></w><wsup><w></w><w>r</w><w><w>2</w></w></wsup><w>+</w><wrow><w></w><w>193.766</w><w></w><wsup><w></w><w>x</w><w><w>2</w></w></wsup></wrow><w>-</w><wrow><w></w><w>27.84</w><w></w><w>r</w><w></w><w>x</w><w></w><wrow><w></w><w>Cos</w><wrow><w></w><wb>[</wb><w>theta</w><wb>]</wb></wrow></wrow></wrow></wrow></w></wsqrt></div>",
+       "data": "<div class=\"wexpr\"><wsqrt><w><w>\\</w></w><w></w><w><wrow><w></w><wrow><w></w><w>193.766</w><w></w><wsup><w></w><w>x</w><w><w>2</w></w></wsup></wrow><w>+</w><wfrac><w><w>193.766</w></w><w><w></w><w><wsup><w></w><wrow><w></w><w>Abs</w><wrow><w></w><wb>[</wb><wrow><w></w><w>Cos</w><wrow><w></w><wb>[</wb><w>theta</w><wb>]</wb></wrow></wrow><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></w></w></wfrac><w>-</w><wfrac><w><wrow><w></w><w>387.533</w><w></w><w>x</w><w></w><wrow><w></w><w>Cos</w><wrow><w></w><wb>[</wb><w>theta</w><wb>]</wb></wrow></wrow></wrow></w><w><w></w><w><wrow><w></w><w>Abs</w><wrow><w></w><wb>[</wb><wrow><w></w><w>Cos</w><wrow><w></w><wb>[</wb><w>theta</w><wb>]</wb></wrow></wrow><wb>]</wb></wrow></wrow></w></w></wfrac></wrow></w></wsqrt></div>",
        "mime": "x-application/wolfram-language-html"
       },
       {
-       "data": "Sqrt[r^2 + 193.76639999999998*x^2 - 27.839999999999996*r*x*Cos[theta]]",
+       "data": "Sqrt[193.76639999999998*x^2 + 193.76639999999998/Abs[Cos[theta]]^2 - (387.53279999999995*x*Cos[theta])/Abs[Cos[theta]]]",
        "mime": "text/plain"
       }
      ],
-     "id": "7de0b3dd-b66e-42dd-a52c-0770690b13af",
+     "id": "fc65f22b-4174-4561-bbdd-5e8e40fa4d4c",
      "metadata": {
-      "cellLabel": "Out[27]= ",
+      "cellLabel": "Out[35]= ",
       "isBoxData": false
      }
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753942630144,
-     "endTime": 1753942630329
-    },
-    "executionOrder": 27,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
-   "value": "rkhm",
+   "value": "test[theta,x]",
    "languageId": "wolfram",
    "outputs": [
     {
      "items": [
       {
-       "data": "<div class=\"wexpr\"><wsqrt><w><w>\\</w></w><w></w><w><wrow><w></w><wsup><w></w><w>r</w><w><w>2</w></w></wsup><w>+</w><wrow><w></w><wsup><w></w><w>nd</w><w><w>2</w></w></wsup><w></w><wsup><w></w><w>rn</w><w><w>2</w></w></wsup><w></w><wsup><w></w><w>x</w><w><w>2</w></w></wsup></wrow><w>-</w><wrow><w></w><w>2</w><w></w><w>nd</w><w></w><w>r</w><w></w><w>rn</w><w></w><w>x</w><w></w><wrow><w></w><w>Cos</w><wrow><w></w><wb>[</wb><w>theta</w><wb>]</wb></wrow></wrow></wrow></wrow></w></wsqrt></div>",
+       "data": "<div class=\"wexpr\"><wsqrt><w><w>\\</w></w><w></w><w><wrow><w></w><wrow><w></w><wrow><w></w><w>-</w><w>387.533</w></wrow><w></w><w>x</w></wrow><w>+</w><wrow><w></w><w>193.766</w><w></w><wsup><w></w><w>x</w><w><w>2</w></w></wsup></wrow><w>+</w><wrow><w></w><w>193.766</w><w></w><wsup><w></w><wrow><w></w><w>Sec</w><wrow><w></w><wb>[</wb><w>theta</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow></wrow></w></wsqrt></div>",
        "mime": "x-application/wolfram-language-html"
       },
       {
-       "data": "Sqrt[r^2 + nd^2*rn^2*x^2 - 2*nd*r*rn*x*Cos[theta]]",
+       "data": "Sqrt[-387.53279999999995*x + 193.76639999999998*x^2 + 193.76639999999998*Sec[theta]^2]",
        "mime": "text/plain"
       }
      ],
-     "id": "1bb7ba30-4551-4dec-b3e8-50593e0bb596",
+     "id": "25ebe6a7-a37b-4fc3-bef5-b66b56847082",
      "metadata": {
-      "cellLabel": "Out[28]= ",
+      "cellLabel": "Out[14]= ",
       "isBoxData": false
      }
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1753943059095,
-     "endTime": 1753943059271
-    },
-    "executionOrder": 28,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 1,
@@ -99,18 +86,275 @@
   },
   {
    "kind": 2,
-   "value": "thetalist1=Range[0,Pi/2,Pi/30];\r\nthetalist2=Range[Pi/2+Pi/30,Pi,Pi/30];",
+   "value": "thetalist1=Range[0,Pi/2-Pi/100,Pi/100];\r\nthetalist2=Range[Pi/2+Pi/100,Pi,Pi/100];\r\nrnnum=4.64;",
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1754006332056,
-     "endTime": 1754006332254
-    },
-    "executionOrder": 29,
-    "success": true
-   }
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "fthetapos=Table[{theta,Boole[nrkhmcompare[theta,1]>rnnum]},{theta,thetalist1}];\r\nfthetaxpos[theta_]:=fthetapos[[(theta+Pi/100)/(Pi/100),2]];\r\n\r\nfthetaneg=Table[{theta,Boole[nrkhmcompare[theta,-1]>rnnum]},{theta,thetalist2}];\r\nfthetaxneg[theta_]:=fthetaneg[[(theta-Pi/2)/(Pi/100),2]];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "rkhminfdpos[theta_,compre_]=\r\nPiecewise[{{nrkhmmin1[r,theta],compre>(1/2)},\r\n{nrkhmmin0pos[r,theta],compre<(1/2)}}];\r\nrkhminfdneg[theta_,compre_]=\r\nPiecewise[{{nrkhmmin1[r,theta],compre>(1/2)},\r\n{nrkhmmin0neg[r,theta],compre<(1/2)}}];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "retpos[theta_]:=Solve[rkhminfdpos[theta,fthetaxpos[theta]]==rnnum,r];\r\nretneg[theta_]:=Solve[rkhminfdneg[theta,fthetaxneg[theta]]==rnnum,r];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "retpos[Pi/50]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><wb>{</wb><wrow><w></w><w>r</w><w class=\"symbol\"></w><w>9.3356</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><w>r</w><w class=\"symbol\"></w><w>18.4495</w></wrow><wb>}</wb></wrow></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{{r -> 9.335598109093027}, {r -> 18.44946601035005}}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "155aeed5-0580-46f2-905b-38419dab0424",
+     "metadata": {
+      "cellLabel": "Out[25]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "retneg[Pi/2+Pi/100]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><wb>{</wb><wrow><w></w><w>r</w><w class=\"symbol\"></w><wrow><w></w><w>-</w><w>4.64229</w></wrow></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><w>r</w><w class=\"symbol\"></w><w>4.64229</w></wrow><wb>}</wb></wrow></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{{r -> -4.64229069022035}, {r -> 4.64229069022035}}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "1e69a031-4385-4612-8b1e-569afc6cd129",
+     "metadata": {
+      "cellLabel": "Out[26]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "repostable=Table[{theta,retpos[theta]},{theta,thetalist1}];\r\nrenegtable=Table[{theta,retneg[theta]},{theta,thetalist2}];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "retable=Join[Table[{repostable[[x,1]],repostable[[x,2,2,1,2]]},{x,1,50}],\r\n{{Pi/2,4.64}},\r\nTable[{renegtable[[x,1]],renegtable[[x,2,2,1,2]]},{x,1,50}]];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "path=FileNameJoin[\"D:\\work\\liujie-laserenhance\\data\\KH\",\"rin-nd3-pb.wdx\"];\r\nExport[path,retable]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>D:\\work\\liujie-laserenhance\\data\\KH\\rin-nd3-pb.wdx</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "\"D:\\\\work\\\\liujie-laserenhance\\\\data\\\\KH\\\\rin-nd3-pb.wdx\"",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "6eb28a94-9239-4d16-9dcc-d7539c79e8ff",
+     "metadata": {
+      "cellLabel": "Out[31]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Table[{renegtable[[x,1]],renegtable[[x,2,2,1,2]]},{x,1,50}]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>51</w><w></w><w>π</w></wrow></w><w><w></w><w><w>100</w></w></w></wfrac><w>,</w><w>4.64229</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>13</w><w></w><w>π</w></wrow></w><w><w></w><w><w>25</w></w></w></wfrac><w>,</w><w>4.64917</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>53</w><w></w><w>π</w></wrow></w><w><w></w><w><w>100</w></w></w></wfrac><w>,</w><w>4.66068</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>27</w><w></w><w>π</w></wrow></w><w><w></w><w><w>50</w></w></w></wfrac><w>,</w><w>4.67688</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>11</w><w></w><w>π</w></wrow></w><w><w></w><w><w>20</w></w></w></wfrac><w>,</w><w>4.69784</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>14</w><w></w><w>π</w></wrow></w><w><w></w><w><w>25</w></w></w></wfrac><w>,</w><w>4.72367</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>57</w><w></w><w>π</w></wrow></w><w><w></w><w><w>100</w></w></w></wfrac><w>,</w><w>4.7545</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>29</w><w></w><w>π</w></wrow></w><w><w></w><w><w>50</w></w></w></wfrac><w>,</w><w>4.7905</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>59</w><w></w><w>π</w></wrow></w><w><w></w><w><w>100</w></w></w></wfrac><w>,</w><w>4.83186</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>3</w><w></w><w>π</w></wrow></w><w><w></w><w><w>5</w></w></w></wfrac><w>,</w><w>4.87878</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>61</w><w></w><w>π</w></wrow></w><w><w></w><w><w>100</w></w></w></wfrac><w>,</w><w>4.93155</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>31</w><w></w><w>π</w></wrow></w><w><w></w><w><w>50</w></w></w></wfrac><w>,</w><w>4.99045</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>63</w><w></w><w>π</w></wrow></w><w><w></w><w><w>100</w></w></w></wfrac><w>,</w><w>5.05582</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>16</w><w></w><w>π</w></wrow></w><w><w></w><w><w>25</w></w></w></wfrac><w>,</w><w>5.12805</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>13</w><w></w><w>π</w></wrow></w><w><w></w><w><w>20</w></w></w></wfrac><w>,</w><w>5.20759</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>33</w><w></w><w>π</w></wrow></w><w><w></w><w><w>50</w></w></w></wfrac><w>,</w><w>5.29495</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>67</w><w></w><w>π</w></wrow></w><w><w></w><w><w>100</w></w></w></wfrac><w>,</w><w>5.3907</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>17</w><w></w><w>π</w></wrow></w><w><w></w><w><w>25</w></w></w></wfrac><w>,</w><w>5.4955</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>69</w><w></w><w>π</w></wrow></w><w><w></w><w><w>100</w></w></w></wfrac><w>,</w><w>5.61009</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>7</w><w></w><w>π</w></wrow></w><w><w></w><w><w>10</w></w></w></wfrac><w>,</w><w>5.73536</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>71</w><w></w><w>π</w></wrow></w><w><w></w><w><w>100</w></w></w></wfrac><w>,</w><w>5.87227</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>18</w><w></w><w>π</w></wrow></w><w><w></w><w><w>25</w></w></w></wfrac><w>,</w><w>6.02196</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>73</w><w></w><w>π</w></wrow></w><w><w></w><w><w>100</w></w></w></wfrac><w>,</w><w>6.18575</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>37</w><w></w><w>π</w></wrow></w><w><w></w><w><w>50</w></w></w></wfrac><w>,</w><w>6.36516</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>3</w><w></w><w>π</w></wrow></w><w><w></w><w><w>4</w></w></w></wfrac><w>,</w><w>6.56195</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>19</w><w></w><w>π</w></wrow></w><w><w></w><w><w>25</w></w></w></wfrac><w>,</w><w>6.7782</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>77</w><w></w><w>π</w></wrow></w><w><w></w><w><w>100</w></w></w></wfrac><w>,</w><w>7.01636</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>39</w><w></w><w>π</w></wrow></w><w><w></w><w><w>50</w></w></w></wfrac><w>,</w><w>7.2793</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>79</w><w></w><w>π</w></wrow></w><w><w></w><w><w>100</w></w></w></wfrac><w>,</w><w>7.57048</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>4</w><w></w><w>π</w></wrow></w><w><w></w><w><w>5</w></w></w></wfrac><w>,</w><w>7.89404</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>81</w><w></w><w>π</w></wrow></w><w><w></w><w><w>100</w></w></w></wfrac><w>,</w><w>8.255</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>41</w><w></w><w>π</w></wrow></w><w><w></w><w><w>50</w></w></w></wfrac><w>,</w><w>8.65951</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>83</w><w></w><w>π</w></wrow></w><w><w></w><w><w>100</w></w></w></wfrac><w>,</w><w>9.11517</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>21</w><w></w><w>π</w></wrow></w><w><w></w><w><w>25</w></w></w></wfrac><w>,</w><w>9.63148</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>17</w><w></w><w>π</w></wrow></w><w><w></w><w><w>20</w></w></w></wfrac><w>,</w><w>10.2205</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>43</w><w></w><w>π</w></wrow></w><w><w></w><w><w>50</w></w></w></wfrac><w>,</w><w>10.8977</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>87</w><w></w><w>π</w></wrow></w><w><w></w><w><w>100</w></w></w></wfrac><w>,</w><w>11.6833</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>22</w><w></w><w>π</w></wrow></w><w><w></w><w><w>25</w></w></w></wfrac><w>,</w><w>12.6044</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>89</w><w></w><w>π</w></wrow></w><w><w></w><w><w>100</w></w></w></wfrac><w>,</w><w>13.6979</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>9</w><w></w><w>π</w></wrow></w><w><w></w><w><w>10</w></w></w></wfrac><w>,</w><w>14.9784</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>91</w><w></w><w>π</w></wrow></w><w><w></w><w><w>100</w></w></w></wfrac><w>,</w><w>15.9065</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>23</w><w></w><w>π</w></wrow></w><w><w></w><w><w>25</w></w></w></wfrac><w>,</w><w>16.5723</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>93</w><w></w><w>π</w></wrow></w><w><w></w><w><w>100</w></w></w></wfrac><w>,</w><w>17.0932</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>47</w><w></w><w>π</w></wrow></w><w><w></w><w><w>50</w></w></w></wfrac><w>,</w><w>17.5109</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>19</w><w></w><w>π</w></wrow></w><w><w></w><w><w>20</w></w></w></wfrac><w>,</w><w>17.8459</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>24</w><w></w><w>π</w></wrow></w><w><w></w><w><w>25</w></w></w></wfrac><w>,</w><w>18.1098</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>97</w><w></w><w>π</w></wrow></w><w><w></w><w><w>100</w></w></w></wfrac><w>,</w><w>18.3095</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>49</w><w></w><w>π</w></wrow></w><w><w></w><w><w>50</w></w></w></wfrac><w>,</w><w>18.4495</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>99</w><w></w><w>π</w></wrow></w><w><w></w><w><w>100</w></w></w></wfrac><w>,</w><w>18.5325</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><w>π</w><w>,</w><w>18.56</w></wrow><wb>}</wb></wrow></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{{(51*Pi)/100, 4.64229069022035}, {(13*Pi)/25, 4.6491740830501}, {(53*Pi)/100, 4.660684281816571}, {(27*Pi)/50, 4.67687858455514}, {(11*Pi)/20, 4.697838183656334}, {(14*Pi)/25, 4.723669167606436}, {(57*Pi)/100, 4.754503848035378}, {(29*Pi)/50, 4.790502443376457}, {(59*Pi)/100, 4.8318551597359605}, {(3*Pi)/5, 4.87878472046556}, {(61*Pi)/100, 4.931549408919569}, {(31*Pi)/50, 4.9904467045832295}, {(63*Pi)/100, 5.055817611969992}, {(16*Pi)/25, 5.128051805429694}, {(13*Pi)/20, 5.207593742623434}, {(33*Pi)/50, 5.294949936667999}, {(67*Pi)/100, 5.390697624177634}, {(17*Pi)/25, 5.4954951267793}, {(69*Pi)/100, 5.610094281406351}, {(7*Pi)/10, 5.735355415599025}, {(71*Pi)/100, 5.872265476174499}, {(18*Pi)/25, 6.021960094137134}, {(73*Pi)/100, 6.1857506012888}, {(37*Pi)/50, 6.365157327021221}, {(3*Pi)/4, 6.561950929411161}, {(19*Pi)/25, 6.778204099928461}, {(77*Pi)/100, 7.01635679518489}, {(39*Pi)/50, 7.279299296264897}, {(79*Pi)/100, 7.570479034863799}, {(4*Pi)/5, 7.8940395015069305}, {(81*Pi)/100, 8.255003052626584}, {(41*Pi)/50, 8.659514685490633}, {(83*Pi)/100, 9.115171882744033}, {(21*Pi)/25, 9.631478179490399}, {(17*Pi)/20, 10.220478187675637}, {(43*Pi)/50, 10.897664804092193}, {(87*Pi)/100, 11.683305160160021}, {(22*Pi)/25, 12.604429577329645}, {(89*Pi)/100, 13.697905438635338}, {(9*Pi)/10, 14.978406470990977}, {(91*Pi)/100, 15.906498862318585}, {(23*Pi)/25, 16.572304658725795}, {(93*Pi)/100, 17.093171263676968}, {(47*Pi)/50, 17.510901394798655}, {(19*Pi)/20, 17.845913328431163}, {(24*Pi)/25, 18.10975244250775}, {(97*Pi)/100, 18.309461944318993}, {(49*Pi)/50, 18.44946601035005}, {(99*Pi)/100, 18.532484428212243}, {Pi, 18.56}}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "ba55d8be-de65-41b4-b246-35d0af8a3e92",
+     "metadata": {
+      "cellLabel": "Out[33]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><w>0</w><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><wb>{</wb><wrow><w></w><w>r</w><w class=\"symbol\"></w><w>9.28</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><w>r</w><w class=\"symbol\"></w><w>18.56</w></wrow><wb>}</wb></wrow></wrow><wb>}</wb></wrow></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{0, {{r -> 9.28}, {r -> 18.56}}}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "d680d340-2ee2-423a-94de-d98a98af5b87",
+     "metadata": {
+      "cellLabel": "Out[136]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>0</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "0",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "e2ad4b60-7aae-433c-98bc-720e39894797",
+     "metadata": {
+      "cellLabel": "Out[99]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><wb>{</wb><wrow><w></w><w>0</w><w>,</w><w>0</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><w>π</w></w><w><w></w><w><w>30</w></w></w></wfrac><w>,</w><w>0</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><w>π</w></w><w><w></w><w><w>15</w></w></w></wfrac><w>,</w><w>0</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><w>π</w></w><w><w></w><w><w>10</w></w></w></wfrac><w>,</w><w>0</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>2</w><w></w><w>π</w></wrow></w><w><w></w><w><w>15</w></w></w></wfrac><w>,</w><w>1</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><w>π</w></w><w><w></w><w><w>6</w></w></w></wfrac><w>,</w><w>1</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><w>π</w></w><w><w></w><w><w>5</w></w></w></wfrac><w>,</w><w>1</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>7</w><w></w><w>π</w></wrow></w><w><w></w><w><w>30</w></w></w></wfrac><w>,</w><w>1</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>4</w><w></w><w>π</w></wrow></w><w><w></w><w><w>15</w></w></w></wfrac><w>,</w><w>1</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>3</w><w></w><w>π</w></wrow></w><w><w></w><w><w>10</w></w></w></wfrac><w>,</w><w>1</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><w>π</w></w><w><w></w><w><w>3</w></w></w></wfrac><w>,</w><w>1</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>11</w><w></w><w>π</w></wrow></w><w><w></w><w><w>30</w></w></w></wfrac><w>,</w><w>1</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>2</w><w></w><w>π</w></wrow></w><w><w></w><w><w>5</w></w></w></wfrac><w>,</w><w>1</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>13</w><w></w><w>π</w></wrow></w><w><w></w><w><w>30</w></w></w></wfrac><w>,</w><w>1</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>7</w><w></w><w>π</w></wrow></w><w><w></w><w><w>15</w></w></w></wfrac><w>,</w><w>1</w></wrow><wb>}</wb></wrow></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{{0, 0}, {Pi/30, 0}, {Pi/15, 0}, {Pi/10, 0}, {(2*Pi)/15, 1}, {Pi/6, 1}, {Pi/5, 1}, {(7*Pi)/30, 1}, {(4*Pi)/15, 1}, {(3*Pi)/10, 1}, {Pi/3, 1}, {(11*Pi)/30, 1}, {(2*Pi)/5, 1}, {(13*Pi)/30, 1}, {(7*Pi)/15, 1}}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "fe91c219-014b-4f3d-968f-10b3764b9ea6",
+     "metadata": {
+      "cellLabel": "Out[98]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><w>0</w><w>,</w><wfrac><w><w>π</w></w><w><w></w><w><w>30</w></w></w></wfrac><w>,</w><wfrac><w><w>π</w></w><w><w></w><w><w>15</w></w></w></wfrac><w>,</w><wfrac><w><w>π</w></w><w><w></w><w><w>10</w></w></w></wfrac><w>,</w><wfrac><w><wrow><w></w><w>2</w><w></w><w>π</w></wrow></w><w><w></w><w><w>15</w></w></w></wfrac><w>,</w><wfrac><w><w>π</w></w><w><w></w><w><w>6</w></w></w></wfrac><w>,</w><wfrac><w><w>π</w></w><w><w></w><w><w>5</w></w></w></wfrac><w>,</w><wfrac><w><wrow><w></w><w>7</w><w></w><w>π</w></wrow></w><w><w></w><w><w>30</w></w></w></wfrac><w>,</w><wfrac><w><wrow><w></w><w>4</w><w></w><w>π</w></wrow></w><w><w></w><w><w>15</w></w></w></wfrac><w>,</w><wfrac><w><wrow><w></w><w>3</w><w></w><w>π</w></wrow></w><w><w></w><w><w>10</w></w></w></wfrac><w>,</w><wfrac><w><w>π</w></w><w><w></w><w><w>3</w></w></w></wfrac><w>,</w><wfrac><w><wrow><w></w><w>11</w><w></w><w>π</w></wrow></w><w><w></w><w><w>30</w></w></w></wfrac><w>,</w><wfrac><w><wrow><w></w><w>2</w><w></w><w>π</w></wrow></w><w><w></w><w><w>5</w></w></w></wfrac><w>,</w><wfrac><w><wrow><w></w><w>13</w><w></w><w>π</w></wrow></w><w><w></w><w><w>30</w></w></w></wfrac><w>,</w><wfrac><w><wrow><w></w><w>7</w><w></w><w>π</w></wrow></w><w><w></w><w><w>15</w></w></w></wfrac></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{0, Pi/30, Pi/15, Pi/10, (2*Pi)/15, Pi/6, Pi/5, (7*Pi)/30, (4*Pi)/15, (3*Pi)/10, Pi/3, (11*Pi)/30, (2*Pi)/5, (13*Pi)/30, (7*Pi)/15}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "8a05697f-cde7-459a-8fef-7cd29b87d0a2",
+     "metadata": {
+      "cellLabel": "Out[147]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
   },
   {
    "kind": 2,

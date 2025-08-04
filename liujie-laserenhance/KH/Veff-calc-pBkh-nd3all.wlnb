@@ -10,11 +10,74 @@
   },
   {
    "kind": 2,
-   "value": "(*x=omega*t*)\r\nre[x_]=rn*nd*Sin[x];\r\nrkhm=Sqrt[r^2+re[x]^2-2*r*re[x]*Cos[theta]];\r\nVeff=V0*rn/rkhm;\r\nnV[r_,theta_]=(Veff/(2Pi))/.{V0->1.55,nd->3,rn->4.64};\r\nintV1[r_,theta_]:=NIntegrate[nV1[r,theta],{x,0,2Pi}];\r\n(*然后下面的正式积分里面需要把rin随theta的变化考虑进来*)",
+   "value": "(*然后下面的正式积分里面需要把rin随theta的变化考虑进来*)\r\nrinre=Import[\"D:\\work\\liujie-laserenhance\\data\\KH\\\\rin-nd3-pb.wdx\"];\r\nrin[theta_]:=rinre[[(theta+Pi/100)/(Pi/100),2]];\r\n(*x=omega*t*)\r\nre[x_]=rn*nd*Sin[x];\r\nrkhm=Sqrt[r^2+re[x]^2-2*r*re[x]*Cos[theta]];\r\nVeff=V0*rn/rkhm;\r\nnV[r_,theta_]=(Veff/(2Pi))/.{V0->1.55,nd->3,rn->4.64};\r\nintV[r_,theta_]:=NIntegrate[nV[r,theta],{x,0,2Pi}];",
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1754299600037,
+     "endTime": 1754299600589
+    },
+    "executionOrder": 8,
+    "success": true
+   }
+  },
+  {
+   "kind": 1,
+   "value": "下面这个计算还蛮牛逼的，mma能把range里的参数直接带进去",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
    "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Vls=ParallelTable[{{theta,r},intV[r,theta]},\r\n{theta,Range[0,Pi,Pi/100]},{r,Join[Range[rin[theta],25,0.5],Range[26,100,2]]}];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1754299604643,
+     "endTime": 1754299638153
+    },
+    "executionOrder": 15,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "path=FileNameJoin[\"D:\\work\\liujie-laserenhance\\data\\KH\",\"Veff-nd3-pb.wdx\"];\r\nExport[path,Vls]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>D:\\work\\liujie-laserenhance\\data\\KH\\Veff-nd3-pb.wdx</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "\"D:\\\\work\\\\liujie-laserenhance\\\\data\\\\KH\\\\Veff-nd3-pb.wdx\"",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "ac501149-ef92-43e8-a27e-24098514a384",
+     "metadata": {
+      "cellLabel": "Out[17]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1754299638154,
+     "endTime": 1754299639579
+    },
+    "executionOrder": 16,
+    "success": true
+   }
   },
   {
    "kind": 2,
