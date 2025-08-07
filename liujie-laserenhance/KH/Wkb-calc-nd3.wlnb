@@ -10,14 +10,14 @@
   },
   {
    "kind": 2,
-   "value": "(*首先导入Veff and rin，最后一行的形式就是对不同theta的Veff(r)*)\r\nVeffre=Import[\"D:\\work\\liujie-laserenhance\\data\\KH\\Veff-nd3-pb.wdx\"];\r\nrinre=Import[\"D:\\work\\liujie-laserenhance\\data\\KH\\\\rin-nd3-pb.wdx\"];\r\nrin[theta_]:=rinre[[(theta+Pi/100)/(Pi/100),2]];\r\nVeffdifthetadata[theta_]:=Table[\r\n    {Veffre[[(theta+Pi/100)/(Pi/100),x,1,2]],Veffre[[(theta+Pi/100)/(Pi/100),x,2]]}\r\n    ,{x,1,Length[Join[Range[rin[theta],25,0.5],Range[26,100,2]]],1}];\r\nVeff[r_,theta_]:=10^(3)*Interpolation[Veffdifthetadata[theta]][r];",
+   "value": "(*首先导入Veff and rin，最后一行的形式就是对不同theta的Veff(r)*)\r\nVeffre=Import[\"D:\\work\\liujie-laserenhance\\data\\KH\\Veff-nd3-pb.wdx\"];\r\nrinre=Import[\"D:\\work\\liujie-laserenhance\\data\\KH\\\\rin-nd3-pb.wdx\"];\r\nrin[theta_]:=rinre[[(theta+Pi/100)/(Pi/100),2]];\r\nVeffdifthetadata[theta_]:=Table[\r\n    {Veffre[[(theta+Pi/100)/(Pi/100),x,1,2]],Veffre[[(theta+Pi/100)/(Pi/100),x,2]]}\r\n    ,{x,1,Length[Join[Range[rin[theta],25,0.5],Range[26,100,2]]],1}];\r\nVeff[r_,theta_]:=10^(3)*Interpolation[Veffdifthetadata[theta]][r];\r\nVeffmax[theta_]:=Veff[rin[theta],theta];",
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
    "executionSummary": {
     "timing": {
-     "startTime": 1754303608945,
-     "endTime": 1754303609904
+     "startTime": 1754354173316,
+     "endTime": 1754354174271
     },
     "executionOrder": 1,
     "success": true
@@ -25,49 +25,16 @@
   },
   {
    "kind": 2,
-   "value": "(*计算rout,E0=148keV*)\r\nrout[theta_,E0_]:=Part[FindRoot[Veff[r,theta]-E0==0,{r,rin[theta],100}],1,2];",
+   "value": "(*计算rout,E0=148keV,E0大一些的时候可能会大于Veff最大值，rout不存在然后P=1，\r\n同时这里直接计算会烂，P得分段*)\r\njudge[theta_,E0_]:=Boole[Veffmax[theta]>E0];\r\nrout[theta_,E0_]:=\r\nPart[FindRoot[Veff[r,theta]-E0==0,{r,rin[theta],100}],1,2];",
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
    "executionSummary": {
     "timing": {
-     "startTime": 1754303716178,
-     "endTime": 1754303716274
+     "startTime": 1754355544093,
+     "endTime": 1754355544267
     },
-    "executionOrder": 16,
-    "success": true
-   }
-  },
-  {
-   "kind": 2,
-   "value": "rout[0,148]",
-   "languageId": "wolfram",
-   "outputs": [
-    {
-     "items": [
-      {
-       "data": "<div class=\"wexpr\"><w>50.5489</w></div>",
-       "mime": "x-application/wolfram-language-html"
-      },
-      {
-       "data": "50.54891487492572",
-       "mime": "text/plain"
-      }
-     ],
-     "id": "5dce9761-cff6-42e4-8409-13ddab3c7d0f",
-     "metadata": {
-      "cellLabel": "Out[17]= ",
-      "isBoxData": false
-     }
-    }
-   ],
-   "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1754303720049,
-     "endTime": 1754303720210
-    },
-    "executionOrder": 17,
+    "executionOrder": 28,
     "success": true
    }
   },
@@ -79,25 +46,25 @@
    "metadata": {},
    "executionSummary": {
     "timing": {
-     "startTime": 1754303722600,
-     "endTime": 1754303722699
+     "startTime": 1754354178759,
+     "endTime": 1754354178872
     },
-    "executionOrder": 18,
+    "executionOrder": 7,
     "success": true
    }
   },
   {
    "kind": 2,
-   "value": "(*参数*)\r\nmass=(11/12)*1.66*10^(-27);\r\nhbar=6.62*10^(-34)/(2*Pi);\r\n(*几率P*)\r\nproblity[theta_,E0_]:=Exp[-2/(hbar)*Sqrt[2*mass]*intpart[theta,E0]];",
+   "value": "(*参数*)\r\nmass=(11/12)*1.66*10^(-27);\r\nhbar=6.62*10^(-34)/(2*Pi);\r\n(*几率P*)\r\nproblitycalc[theta_,E0_]:=Exp[-2/(hbar)*Sqrt[2*mass]*intpart[theta,E0]];\r\nproblity[theta_,E0_]:=Piecewise[{{problitycalc[theta,E0],judge[theta,E0]>(1/2)},\r\n{1,judge[theta,E0]<(1/2)}}]",
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
    "executionSummary": {
     "timing": {
-     "startTime": 1754303723523,
-     "endTime": 1754303723798
+     "startTime": 1754355769589,
+     "endTime": 1754355769916
     },
-    "executionOrder": 19,
+    "executionOrder": 30,
     "success": true
    }
   },
@@ -117,9 +84,9 @@
        "mime": "text/plain"
       }
      ],
-     "id": "f00ea367-6c49-4e08-8a81-17334ee160bd",
+     "id": "4a997b91-1ab4-43c0-96c2-f62261096372",
      "metadata": {
-      "cellLabel": "Out[22]= ",
+      "cellLabel": "Out[34]= ",
       "isBoxData": false
      }
     }
@@ -127,47 +94,32 @@
    "metadata": {},
    "executionSummary": {
     "timing": {
-     "startTime": 1754303724872,
-     "endTime": 1754303725049
+     "startTime": 1754355774008,
+     "endTime": 1754355774207
     },
-    "executionOrder": 22,
+    "executionOrder": 34,
     "success": true
    }
   },
   {
    "kind": 2,
-   "value": "probres=ParallelTable[{theta,problity[theta,148]},{theta,0,Pi,Pi/100}];",
-   "languageId": "wolfram",
-   "outputs": [],
-   "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1754303832155,
-     "endTime": 1754303832613
-    },
-    "executionOrder": 27,
-    "success": true
-   }
-  },
-  {
-   "kind": 2,
-   "value": "path=FileNameJoin[\"D:\\work\\liujie-laserenhance\\data\\KH\",\"WKBjilv-nd3-pb.wdx\"];\r\nExport[path,probres]",
+   "value": "problity[0,600]",
    "languageId": "wolfram",
    "outputs": [
     {
      "items": [
       {
-       "data": "<div class=\"wexpr\"><w>D:\\work\\liujie-laserenhance\\data\\KH\\WKBjilv-nd3-pb.wdx</w></div>",
+       "data": "<div class=\"wexpr\"><w>1</w></div>",
        "mime": "x-application/wolfram-language-html"
       },
       {
-       "data": "\"D:\\\\work\\\\liujie-laserenhance\\\\data\\\\KH\\\\WKBjilv-nd3-pb.wdx\"",
+       "data": "1",
        "mime": "text/plain"
       }
      ],
-     "id": "04f05033-7ebe-481d-8ba5-ef8262ea5d7a",
+     "id": "0918bbbe-3c54-4c65-a783-23391d24130c",
      "metadata": {
-      "cellLabel": "Out[29]= ",
+      "cellLabel": "Out[35]= ",
       "isBoxData": false
      }
     }
@@ -175,10 +127,73 @@
    "metadata": {},
    "executionSummary": {
     "timing": {
-     "startTime": 1754303835934,
-     "endTime": 1754303836231
+     "startTime": 1754355776622,
+     "endTime": 1754355776816
     },
-    "executionOrder": 28,
+    "executionOrder": 35,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "probtest=ParallelTable[{E0,problity[0,E0]},{E0,90,1000,1}];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1754355782492,
+     "endTime": 1754355783176
+    },
+    "executionOrder": 36,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "probres=ParallelTable[{{theta,E0},problity[theta,E0]},{theta,0,Pi,Pi/100},{E0,90,1000,1}];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1754355785601,
+     "endTime": 1754355997180
+    },
+    "executionOrder": 37,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "path=FileNameJoin[\"D:\\work\\liujie-laserenhance\\data\\KH\",\"WKBjilv-nd3-allE-pb.wdx\"];\r\nExport[path,probres]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>D:\\work\\liujie-laserenhance\\data\\KH\\WKBjilv-nd3-allE-pb.wdx</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "\"D:\\\\work\\\\liujie-laserenhance\\\\data\\\\KH\\\\WKBjilv-nd3-allE-pb.wdx\"",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "39d806a3-801b-4846-86ce-f73e526c612c",
+     "metadata": {
+      "cellLabel": "Out[39]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1754355997180,
+     "endTime": 1754356005980
+    },
+    "executionOrder": 38,
     "success": true
    }
   },

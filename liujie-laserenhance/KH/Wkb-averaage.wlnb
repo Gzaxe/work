@@ -10,15 +10,70 @@
   },
   {
    "kind": 2,
-   "value": "problityre=Import[\"D:\\work\\liujie-laserenhance\\data\\KH\\WKBjilv-nd3-pb.wdx\"];\r\nplf=Interpolation[problityre];",
+   "value": "problityre=Import[\"D:\\work\\liujie-laserenhance\\data\\KH\\WKBjilv-nd3-allE-pb.wdx\"];\r\nplf=Interpolation[Flatten[problityre,1]];",
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {}
+   "executionSummary": {
+    "timing": {
+     "startTime": 1754356936430,
+     "endTime": 1754356939458
+    },
+    "executionOrder": 1,
+    "success": true
+   }
   },
   {
    "kind": 2,
-   "value": "1/2*NIntegrate[plf[x]*Sin[x],{x,0,Pi}]",
+   "value": "plf[0,148]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>0.0179341</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "0.017934060770443436",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "a2db553a-e405-4f4c-824d-47733cf9bdca",
+     "metadata": {
+      "cellLabel": "Out[3]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1754356941433,
+     "endTime": 1754356941623
+    },
+    "executionOrder": 3,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "pave[E0_]:=1/2*NIntegrate[plf[theta,E0]*Sin[theta],{theta,0,Pi}];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1754356947512,
+     "endTime": 1754356947622
+    },
+    "executionOrder": 5,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "pave[148]",
    "languageId": "wolfram",
    "outputs": [
     {
@@ -32,15 +87,55 @@
        "mime": "text/plain"
       }
      ],
-     "id": "8199aa99-3532-4184-9646-39343ec1092e",
+     "id": "e3945029-f37e-4f9c-9c65-c049aabcc70e",
      "metadata": {
-      "cellLabel": "Out[32]= ",
+      "cellLabel": "Out[6]= ",
       "isBoxData": false
      }
     }
    ],
    "metadata": {},
-   "executionSummary": {}
+   "executionSummary": {
+    "timing": {
+     "startTime": 1754356948969,
+     "endTime": 1754356949652
+    },
+    "executionOrder": 6,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "pavere=ParallelTable[{E0,pave[E0]},{E0,90,1000,1}];\r\npath=FileNameJoin[\"D:\\work\\liujie-laserenhance\\data\\KH\",\"pave-nd3-pb.wdx\"];\r\nExport[path,pavere]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>D:\\work\\liujie-laserenhance\\data\\KH\\pave-nd3-pb.wdx</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "\"D:\\\\work\\\\liujie-laserenhance\\\\data\\\\KH\\\\pave-nd3-pb.wdx\"",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "740e67f7-0f51-441c-b7fa-c2a6940ce4bb",
+     "metadata": {
+      "cellLabel": "Out[49]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1754356310344,
+     "endTime": 1754356377674
+    },
+    "executionOrder": 47,
+    "success": true
+   }
   },
   {
    "kind": 2,
