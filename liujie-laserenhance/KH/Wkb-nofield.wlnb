@@ -10,46 +10,46 @@
   },
   {
    "kind": 2,
-   "value": "(*V(r)*)\r\nVr[r_]=(V0*rn/r)/.{V0->1.55*10^3,rn->4.64};",
+   "value": "(*V(r)*)\r\nVr[r_]=(V0*rn/r)/.{V0->1.55*10^3,rn->4.64*10^(-15)};",
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
    "executionSummary": {
     "timing": {
-     "startTime": 1754441196681,
-     "endTime": 1754441196805
+     "startTime": 1754615030144,
+     "endTime": 1754615030260
     },
-    "executionOrder": 1,
+    "executionOrder": 62,
     "success": true
    }
   },
   {
    "kind": 2,
-   "value": "rout[E0_]:=\r\nPart[FindRoot[Vr[r]-E0==0,{r,4.64,100}],1,2];",
+   "value": "rout[E0_]:=\r\nPart[FindRoot[Vr[r]-E0==0,{r,4.64*10^(-15),100*10^(-15)}],1,2];",
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
    "executionSummary": {
     "timing": {
-     "startTime": 1754441198329,
-     "endTime": 1754441198445
+     "startTime": 1754615031447,
+     "endTime": 1754615031551
     },
-    "executionOrder": 2,
+    "executionOrder": 63,
     "success": true
    }
   },
   {
    "kind": 2,
-   "value": "intpart[E0_]:=\r\nNIntegrate[Sqrt[Vr[r]-E0],\r\n{r,4.64,rout[E0]}]*Sqrt[10^(3)*1.6*10^(-19)]*10^(-15);",
+   "value": "intpart[E0_]:=\r\nNIntegrate[Sqrt[Vr[r]-E0],\r\n{r,4.64*10^(-15),rout[E0]}]*Sqrt[10^(3)*1.6*10^(-19)];",
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
    "executionSummary": {
     "timing": {
-     "startTime": 1754441200504,
-     "endTime": 1754441200602
+     "startTime": 1754615032359,
+     "endTime": 1754615032455
     },
-    "executionOrder": 3,
+    "executionOrder": 64,
     "success": true
    }
   },
@@ -61,10 +61,10 @@
    "metadata": {},
    "executionSummary": {
     "timing": {
-     "startTime": 1754441202442,
-     "endTime": 1754441202714
+     "startTime": 1754615033743,
+     "endTime": 1754615034008
     },
-    "executionOrder": 4,
+    "executionOrder": 65,
     "success": true
    }
   },
@@ -74,14 +74,7 @@
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1754441207953,
-     "endTime": 1754441366422
-    },
-    "executionOrder": 7,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -124,14 +117,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1754441391285,
-     "endTime": 1754441392352
-    },
-    "executionOrder": 8,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -157,14 +143,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1754441501871,
-     "endTime": 1754441502062
-    },
-    "executionOrder": 12,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
