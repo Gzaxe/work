@@ -2,8 +2,16 @@
  "cells": [
   {
    "kind": 1,
-   "value": "这个文件用来看看半经典模型中有哪些东西需要做计算",
+   "value": "这个文件用来看看半经典模型中有哪些东西需要做计算，实际上最重要的就是\r\n1、求解哈密顿方程的数值解，从而给出r的最小值，隧穿的发生点r就是经典运动的折返点或者说禁止点，rmin要是算出来比rn还小那就是说不用隧穿就进去了几率为1.\r\n这里要学学龙格库塔方法以及想想能量E是怎么放进去的这时候。\r\n2、哈密顿方程数值求解的时候用一个分布作为初始条件，\r\n这里要想想怎么放进去",
    "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "ResourceFunction[\r\n \"RungeKuttaMethod\"][\"RK4\", {y'[x] == y[x] Cos[x + y[x]], y[0] == 1}, y, {x, 0, 30}]",
+   "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
    "executionSummary": {}

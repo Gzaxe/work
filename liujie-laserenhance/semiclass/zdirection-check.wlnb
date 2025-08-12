@@ -1,0 +1,20 @@
+{
+ "cells": [
+  {
+   "kind": 1,
+   "value": "这个文件用来计算初始位置和速度都是沿着z轴即激光方向的情况下，哈密顿给出的rmin与wkb之后的几率，用来考察I-ω的数值对于几率的影响，来评估意义，需要找一个能够对比的文章的量来保证计算是对的。",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}
