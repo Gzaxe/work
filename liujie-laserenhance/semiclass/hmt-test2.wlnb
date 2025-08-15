@@ -1,0 +1,119 @@
+{
+ "cells": [
+  {
+   "kind": 2,
+   "value": "Hre[pvec_,rvec_,t_]:=\r\nTotal[(pvec)^2/(2 mn)]+1/(Sqrt[Total[rvec^2]]);\r\nThread[r'[t]==Grad[Hre[p[t],r[t],t],p[t]]];\r\nThread[p'[t]==-Grad[Hre[p[t],r[t],t],r[t]]];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Hre[p[t],r[t],t]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wfrac><w><wsup><w></w><wrow><w></w><w>p1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></w><w><w></w><w><w>2</w></w></w></wfrac><w>+</w><wfrac><w><wsup><w></w><wrow><w></w><w>p2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></w><w><w></w><w><w>2</w></w></w></wfrac><w>+</w><wfrac><w><wsup><w></w><wrow><w></w><w>p3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></w><w><w></w><w><w>2</w></w></w></wfrac><w>+</w><wfrac><w><w>1</w></w><w><w></w><w><wsqrt><w><w>\\</w></w><w></w><w><wrow><w></w><wsup><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow></w></wsqrt></w></w></wfrac></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "p1[t]^2/2 + p2[t]^2/2 + p3[t]^2/2 + 1/Sqrt[r1[t]^2 + r2[t]^2 + r3[t]^2]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "18fa2504-d6c3-4e5f-84c1-0227ba46c1a0",
+     "metadata": {
+      "cellLabel": "Out[7]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1755243153998,
+     "endTime": 1755243154187
+    },
+    "executionOrder": 7,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "Thread[r'[t]==Grad[Hre[p[t],r[t],t],p[t]]]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><wrow><w></w><wsup><w></w><w>r1</w><w><w class=\"small-symbol\"></w></w></wsup><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><wrow><w></w><w>p1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></wrow><w>,</w><wrow><w></w><wrow><w></w><wsup><w></w><w>r2</w><w><w class=\"small-symbol\"></w></w></wsup><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><wrow><w></w><w>p2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></wrow><w>,</w><wrow><w></w><wrow><w></w><wsup><w></w><w>r3</w><w><w class=\"small-symbol\"></w></w></wsup><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><wrow><w></w><w>p3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></wrow></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{Derivative[1][r1][t] == p1[t], Derivative[1][r2][t] == p2[t], Derivative[1][r3][t] == p3[t]}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "d3eb8eb1-3257-453d-bf4f-088b29b67f28",
+     "metadata": {
+      "cellLabel": "Out[8]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1755243176668,
+     "endTime": 1755243176836
+    },
+    "executionOrder": 8,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "Thread[p'[t]==-Grad[Hre[p[t],r[t],t],r[t]]]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><wrow><w></w><wsup><w></w><w>p1</w><w><w class=\"small-symbol\"></w></w></wsup><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><wfrac><w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></w><w><w></w><w><wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wsup><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow><wb>)</wb></wrow><w><wrow><w></w><w>3</w><w>/</w><w>2</w></wrow></w></wsup></w></w></wfrac></wrow><w>,</w><wrow><w></w><wrow><w></w><wsup><w></w><w>p2</w><w><w class=\"small-symbol\"></w></w></wsup><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><wfrac><w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></w><w><w></w><w><wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wsup><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow><wb>)</wb></wrow><w><wrow><w></w><w>3</w><w>/</w><w>2</w></wrow></w></wsup></w></w></wfrac></wrow><w>,</w><wrow><w></w><wrow><w></w><wsup><w></w><w>p3</w><w><w class=\"small-symbol\"></w></w></wsup><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><wfrac><w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></w><w><w></w><w><wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wsup><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow><wb>)</wb></wrow><w><wrow><w></w><w>3</w><w>/</w><w>2</w></wrow></w></wsup></w></w></wfrac></wrow></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{Derivative[1][p1][t] == r1[t]/(r1[t]^2 + r2[t]^2 + r3[t]^2)^(3/2), Derivative[1][p2][t] == r2[t]/(r1[t]^2 + r2[t]^2 + r3[t]^2)^(3/2), Derivative[1][p3][t] == r3[t]/(r1[t]^2 + r2[t]^2 + r3[t]^2)^(3/2)}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "56ff552f-a7fb-4662-bbbf-a9d977d3fcf3",
+     "metadata": {
+      "cellLabel": "Out[9]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1755243228005,
+     "endTime": 1755243228185
+    },
+    "executionOrder": 9,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}

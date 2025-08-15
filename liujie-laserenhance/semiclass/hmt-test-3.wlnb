@@ -1,0 +1,467 @@
+{
+ "cells": [
+  {
+   "kind": 2,
+   "value": "(*hamiltonian calc*)\r\n(*各常数设定，常数不用向量啊，具体数值无所谓，反正pb和dt之间只是改个数值，\r\n这里用的是dt的数值*)\r\nmu0=1;\r\nc0=1;\r\nmn=1;\r\nepsilon0=1;\r\nqn=1;\r\nA0=Sqrt[2*I0/(epsilon0*c0)]/omega;\r\nfn[t_]=Piecewise[{{Sin[omega*t/12]^(2),t<=6*Pi/omega},{1,t>6*Pi/omega}}];\r\nfn1[t_]=Sin[omega*t/12]^(2);\r\nfn1[t_]=1;\r\nAvec1[I0_,omega_,phi0_]={0,0,A0*fn1[t]*Cos[omega*t+phi0]};\r\n(*坐标和动量的矢量形式*)\r\np[t_]:={p1[t],p2[t],p3[t]};\r\nr[t_]:={r1[t],r2[t],r3[t]};\r\n(*set hamiltonian*)\r\nHre[t_,I0_,omega_,phi0_]=\r\nTotal[(p[t]-qn*Avec1[I0,omega,phi0])^2/(2 mn)]+1/(4*Pi*epsilon0*Sqrt[Total[r[t]^2]]);\r\n(*set hamiltonian equations这个和上面的哈密顿量形式无关，所以分开写*)\r\nHalmitonEq[I0_,omega_,phi0_,r10_,r20_,r30_,p10_,p20_,p30_]=\r\n{           Thread[r'[t]==Grad[Hre[t,I0,omega,phi0],p[t]]],\r\n            Thread[p'[t]==-Grad[Hre[t,I0,omega,phi0],r[t]]],\r\n    (*初态*) r1[0]==r10,r2[0]==r20,r3[0]==r30,\r\n            p1[0]==p10,p2[0]==p20,p3[0]==p30\r\n};\r\n(*数值计算，作为参数的函数*)\r\nsol[I0_,omega_,phi0_,r10_,r20_,r30_,p10_,p20_,p30_]:=\r\nNDSolve[HalmitonEq[I0,omega,phi0,r10,r20,r30,p10,p20,p30],Join[r[t],p[t]],{t,0,5*10^(-15)},\r\nMethod->{\"SymplecticPartitionedRungeKutta\",\"DifferenceOrder\"->4,\r\n\"PositionVariables\"->{r1[t],r2[t],r3[t]}}\r\n];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "(*提取计算给出的结果*)\r\n{r1Sol,r2Sol,r3Sol,p1Sol,p2Sol,p3Sol}=\r\nTable[var[t]/.First[sol[10^(20),9.5*10^(34),Pi/2,0,0,5,\r\n0,0,-8]],\r\n{var,{r1,r2,r3,p1,p2,p3}}];",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<pre><span class=\"wl-message\">NDSolve::ndfdmc</span>: \n   Computed derivatives do not have dimensionality consistent with the initial\n    conditions.</pre>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "NDSolve::ndfdmc: \n   Computed derivatives do not have dimensionality consistent with the initial\n    conditions.",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "b66a9557-c3a4-45f7-adc5-47f642335a47",
+     "metadata": {
+      "cellLabel": "",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<pre><span class=\"wl-message\">ReplaceAll::rmix</span>: \n   Elements of {{r1'[t] == {3 p1[t], 0, 0}, r2'[t] == {0, 3 p2[t], 0}, \n      r3'[t] == {0, 0, 3 p3[t]}}, \n                               r1[t]                  r2[t]    r3[t]\n     {p1'[t] == {----------------------------------, -------, -------}, \n                            2        2        2 3/2  4 &lt;&lt;2&gt;&gt;  4 &lt;&lt;2&gt;&gt;\n                 4 Pi (r1[t]  + r2[t]  + r3[t] )\n      &lt;&lt;2&gt;&gt;}, &lt;&lt;5&gt;&gt;, p3[0] == -8} are a mixture of lists and nonlists.</pre>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "ReplaceAll::rmix: \n   Elements of {{r1'[t] == {3 p1[t], 0, 0}, r2'[t] == {0, 3 p2[t], 0}, \n      r3'[t] == {0, 0, 3 p3[t]}}, \n                               r1[t]                  r2[t]    r3[t]\n     {p1'[t] == {----------------------------------, -------, -------}, \n                            2        2        2 3/2  4 <<2>>  4 <<2>>\n                 4 Pi (r1[t]  + r2[t]  + r3[t] )\n      <<2>>}, <<5>>, p3[0] == -8} are a mixture of lists and nonlists.",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "d1a4a616-a376-4e29-95b2-b2422463b03d",
+     "metadata": {
+      "cellLabel": "",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<pre><span class=\"wl-message\">NDSolve::ndfdmc</span>: \n   Computed derivatives do not have dimensionality consistent with the initial\n    conditions.</pre>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "NDSolve::ndfdmc: \n   Computed derivatives do not have dimensionality consistent with the initial\n    conditions.",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "c975d0fa-18db-484e-92cc-53712bbfe775",
+     "metadata": {
+      "cellLabel": "",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<pre><span class=\"wl-message\">ReplaceAll::rmix</span>: \n   Elements of {{r1'[t] == {3 p1[t], 0, 0}, r2'[t] == {0, 3 p2[t], 0}, \n      r3'[t] == {0, 0, 3 p3[t]}}, \n                               r1[t]                  r2[t]    r3[t]\n     {p1'[t] == {----------------------------------, -------, -------}, \n                            2        2        2 3/2  4 &lt;&lt;2&gt;&gt;  4 &lt;&lt;2&gt;&gt;\n                 4 Pi (r1[t]  + r2[t]  + r3[t] )\n      &lt;&lt;2&gt;&gt;}, &lt;&lt;5&gt;&gt;, p3[0] == -8} are a mixture of lists and nonlists.</pre>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "ReplaceAll::rmix: \n   Elements of {{r1'[t] == {3 p1[t], 0, 0}, r2'[t] == {0, 3 p2[t], 0}, \n      r3'[t] == {0, 0, 3 p3[t]}}, \n                               r1[t]                  r2[t]    r3[t]\n     {p1'[t] == {----------------------------------, -------, -------}, \n                            2        2        2 3/2  4 <<2>>  4 <<2>>\n                 4 Pi (r1[t]  + r2[t]  + r3[t] )\n      <<2>>}, <<5>>, p3[0] == -8} are a mixture of lists and nonlists.",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "dd66d16d-1b11-45be-92f5-198b01458585",
+     "metadata": {
+      "cellLabel": "",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<pre><span class=\"wl-message\">NDSolve::ndfdmc</span>: \n   Computed derivatives do not have dimensionality consistent with the initial\n    conditions.</pre>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "NDSolve::ndfdmc: \n   Computed derivatives do not have dimensionality consistent with the initial\n    conditions.",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "5d16cdb8-2dc7-443e-acbd-21c0bfbd9610",
+     "metadata": {
+      "cellLabel": "",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<pre><span class=\"wl-message\">General::stop</span>: Further output of NDSolve::ndfdmc\n     will be suppressed during this calculation.</pre>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "General::stop: Further output of NDSolve::ndfdmc\n     will be suppressed during this calculation.",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "adc61dc0-2df0-4343-ba21-5e19bf888872",
+     "metadata": {
+      "cellLabel": "",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<pre><span class=\"wl-message\">ReplaceAll::rmix</span>: \n   Elements of {{r1'[t] == {3 p1[t], 0, 0}, r2'[t] == {0, 3 p2[t], 0}, \n      r3'[t] == {0, 0, 3 p3[t]}}, \n                               r1[t]                  r2[t]    r3[t]\n     {p1'[t] == {----------------------------------, -------, -------}, \n                            2        2        2 3/2  4 &lt;&lt;2&gt;&gt;  4 &lt;&lt;2&gt;&gt;\n                 4 Pi (r1[t]  + r2[t]  + r3[t] )\n      &lt;&lt;2&gt;&gt;}, &lt;&lt;5&gt;&gt;, p3[0] == -8} are a mixture of lists and nonlists.</pre>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "ReplaceAll::rmix: \n   Elements of {{r1'[t] == {3 p1[t], 0, 0}, r2'[t] == {0, 3 p2[t], 0}, \n      r3'[t] == {0, 0, 3 p3[t]}}, \n                               r1[t]                  r2[t]    r3[t]\n     {p1'[t] == {----------------------------------, -------, -------}, \n                            2        2        2 3/2  4 <<2>>  4 <<2>>\n                 4 Pi (r1[t]  + r2[t]  + r3[t] )\n      <<2>>}, <<5>>, p3[0] == -8} are a mixture of lists and nonlists.",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "b25f6d88-8d5f-4c7d-9f61-7bad6016d068",
+     "metadata": {
+      "cellLabel": "",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<pre><span class=\"wl-message\">General::stop</span>: Further output of ReplaceAll::rmix\n     will be suppressed during this calculation.</pre>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "General::stop: Further output of ReplaceAll::rmix\n     will be suppressed during this calculation.",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "5b892f96-8800-48d0-bad0-9bbb32cf515e",
+     "metadata": {
+      "cellLabel": "",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Plot[r2Sol,{t,0,2*10^(-16)}]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wgraph class=\"resizable\" style=\"width:720px;height:405px;\" aspect-ratio=\"0.5625\" tabIndex=\"-1\"><img src=\"data:image/png;base64,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\n\" /></wgraph></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "Graphics[Annotation[{{{{}, {}, Annotation[{Directive[Opacity[1.], RGBColor[0.24, 0.6, 0.8], AbsoluteThickness[2]], Line[{{4.081632653061224*^-24, 0.}, {6.134358411192535*^-20, 0.}, {1.2268308659119764*^-19, 0.}, {2.453620915497422*^-19, 0.}, {4.907201014668314*^-19, 0.}, {9.814361213010098*^-19, 0.}, {1.9628681609693665*^-18, 0.}, {3.9257322403060796*^-18, 0.}, {8.18167141709173*^-18, 0.}, {1.215557671403042*^-17, 0.}, {1.6051529763775213*^-17, 0.}, {2.027769383163223*^-17, 0.}, {2.4221824019642284*^-17, 0.}, {2.8496165225764566*^-17, 0.}, {3.269255418469294*^-17, 0.}, {3.660690926377436*^-17, 0.}, {4.0851475360968*^-17, 0.}, {4.4814007578314685*^-17, 0.}, {4.869858754846747*^-17, 0.}, {5.291337853673248*^-17, 0.}, {5.684613564515052*^-17, 0.}, {6.110910377168079*^-17, 0.}, {6.529411965101716*^-17, 0.}, {6.919710165050658*^-17, 0.}, {7.343029466810821*^-17, 0.}, {7.738145380586289*^-17, 0.}, {8.166282396172979*^-17, 0.}, {8.586624187040279*^-17, 0.}, {8.978762589922883*^-17, 0.}, {9.403922094616709*^-17, 0.}, {9.800878211325839*^-17, 0.}, {1.0190039103315579*^-16, 0.}, {1.0612221097116541*^-16, 0.}, {1.1006199702932808*^-16, 0.}, {1.1433199410560295*^-16, 0.}, {1.1852403893468394*^-16, 0.}, {1.2243404988391794*^-16, 0.}, {1.2667427185126418*^-16, 0.}, {1.3063245993876345*^-16, 0.}, {1.3451269577906885*^-16, 0.}, {1.3872314263748644*^-16, 0.}, {1.4265155561605708*^-16, 0.}, {1.4691017961273994*^-16, 0.}, {1.5088676972957586*^-16, 0.}, {1.5478540759921786*^-16, 0.}, {1.5901425648697208*^-16, 0.}, {1.6296107149487935*^-16, 0.}, {1.6723809752089885*^-16, 0.}, {1.7143717129972444*^-16, 0.}, {1.7535421119870307*^-16, 0.}, {1.7960146211579393*^-16, 0.}, {1.8356667915303784*^-16, 0.}, {1.8745394394308783*^-16, 0.}, {1.9167141975125005*^-16, 0.}, {1.9560686167956532*^-16, 0.}, {1.9567550440204662*^-16, 0.}, {1.957441471245279*^-16, 0.}, {1.9588143256949044*^-16, 0.}, {1.9615600345941559*^-16, 0.}, {1.9670514523926583*^-16, 0.}, {1.9780342879896633*^-16, 0.}, {1.978720715214476*^-16, 0.}, {1.9794071424392887*^-16, 0.}, {1.9807799968889145*^-16, 0.}, {1.9835257057881657*^-16, 0.}, {1.9890171235866682*^-16, 0.}, {1.989703550811481*^-16, 0.}, {1.9903899780362937*^-16, 0.}, {1.9917628324859194*^-16, 0.}, {1.9945085413851706*^-16, 0.}, {1.9951949686099834*^-16, 0.}, {1.9958813958347964*^-16, 0.}, {1.997254250284422*^-16, 0.}, {1.9979406775092349*^-16, 0.}, {1.9986271047340476*^-16, 0.}, {1.9993135319588603*^-16, 0.}, {1.9999999591836733*^-16, 0.}}]}, \"Charting`Private`Tag#1\"]}}, {}}, Association[\"HighlightElements\" -> Association[\"Label\" -> {\"XYLabel\"}, \"Ball\" -> {\"InterpolatedBall\"}], \"LayoutOptions\" -> Association[\"PanelPlotLayout\" -> Association[], \"PlotRange\" -> {{0, 1/5000000000000000}, {-1., 1.}}, \"Frame\" -> {{False, False}, {False, False}}, \"AxesOrigin\" -> {0, 0}, \"ImageSize\" -> {360, 360/GoldenRatio}, \"Axes\" -> {True, True}, \"LabelStyle\" -> {}, \"AspectRatio\" -> GoldenRatio^(-1), \"DefaultStyle\" -> {Directive[Opacity[1.], RGBColor[0.24, 0.6, 0.8], AbsoluteThickness[2]]}, \"HighlightLabelingFunctions\" -> Association[\"CoordinatesToolOptions\" -> ({(Identity[#1] & )[#1[[1]]], (Identity[#1] & )[#1[[2]]]} & ), \"ScalingFunctions\" -> {{Identity, Identity}, {Identity, Identity}}], \"Primitives\" -> {}, \"GCFlag\" -> False], \"Meta\" -> Association[\"DefaultHighlight\" -> {\"Dynamic\", None}, \"Index\" -> {}, \"Function\" -> Plot, \"GroupHighlight\" -> False]], \"DynamicHighlight\"], {DisplayFunction -> Identity, DisplayFunction -> Identity, Ticks -> {Automatic, Automatic}, AxesOrigin -> {0, 0}, FrameTicks -> {{Automatic, Automatic}, {Automatic, Automatic}}, GridLines -> {None, None}, DisplayFunction -> Identity, PlotRangePadding -> {{Scaled[0.02], Scaled[0.02]}, {Scaled[0.05], Scaled[0.05]}}, PlotRangeClipping -> True, ImagePadding -> All, DisplayFunction -> Identity, AspectRatio -> GoldenRatio^(-1), Axes -> {True, True}, AxesLabel -> {None, None}, AxesOrigin -> {0, 0}, DisplayFunction :> Identity, Frame -> {{False, False}, {False, False}}, FrameLabel -> {{None, None}, {None, None}}, FrameTicks -> {{Automatic, Automatic}, {Automatic, Automatic}}, GridLines -> {None, None}, GridLinesStyle -> Directive[GrayLevel[0.5, 0.4]], Method -> {\"DefaultBoundaryStyle\" -> Automatic, \"DefaultGraphicsInteraction\" -> {\"Version\" -> 1.2, \"TrackMousePosition\" -> {True, False}, \"Effects\" -> {\"Highlight\" -> {\"ratio\" -> 2}, \"HighlightPoint\" -> {\"ratio\" -> 2}, \"Droplines\" -> {\"freeformCursorMode\" -> True, \"placement\" -> {\"x\" -> \"All\", \"y\" -> \"None\"}}}}, \"DefaultMeshStyle\" -> AbsolutePointSize[6], \"ScalingFunctions\" -> None, \"CoordinatesToolOptions\" -> {\"DisplayFunction\" -> ({(Identity[#1] & )[#1[[1]]], (Identity[#1] & )[#1[[2]]]} & ), \"CopiedValueFunction\" -> ({(Identity[#1] & )[#1[[1]]], (Identity[#1] & )[#1[[2]]]} & )}}, PlotRange -> {{0, 1/5000000000000000}, {-1., 1.}}, PlotRangeClipping -> True, PlotRangePadding -> {{Scaled[0.02], Scaled[0.02]}, {Scaled[0.02], Scaled[0.02]}}, Ticks -> {Automatic, Automatic}}]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "84b9cd0f-f7db-4020-9d12-c6e7f91ca282",
+     "metadata": {
+      "cellLabel": "Out[16]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Hre[pvec_,rvec_,t_,I0_,omega_,phi0_]:=\r\nTotal[(pvec-qn*Avec[I0,omega,phi0])^2/(2 mn)]+1/(4*Pi*epsilon0*Sqrt[Total[rvec^2]]);",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "HalmitonEq[10^(20),9.5*10^(34),Pi/2,0,0,0.05*10^(-9),\r\n0,0,-1.8*10^(-21)]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><wrow><w></w><wsup><w></w><w>r1</w><w><w class=\"small-symbol\"></w></w></wsup><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><w>3</w><w></w><wrow><w></w><w>p1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></wrow><w>,</w><w>0</w><w>,</w><w>0</w></wrow><wb>}</wb></wrow></wrow><w>,</w><wrow><w></w><wrow><w></w><wsup><w></w><w>r2</w><w><w class=\"small-symbol\"></w></w></wsup><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><wrow><w></w><wb>{</wb><wrow><w></w><w>0</w><w>,</w><wrow><w></w><w>3</w><w></w><wrow><w></w><w>p2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></wrow><w>,</w><w>0</w></wrow><wb>}</wb></wrow></wrow><w>,</w><wrow><w></w><wrow><w></w><wsup><w></w><w>r3</w><w><w class=\"small-symbol\"></w></w></wsup><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><wrow><w></w><wb>{</wb><wrow><w></w><w>0</w><w>,</w><w>0</w><w>,</w><wrow><w></w><w>3</w><w></w><wrow><w></w><w>p3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></wrow></wrow><wb>}</wb></wrow></wrow></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><wrow><w></w><wsup><w></w><w>p1</w><w><w class=\"small-symbol\"></w></w></wsup><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></w><w><w></w><w><wrow><w></w><w>4</w><w></w><w>π</w><w></w><wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wsup><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow><wb>)</wb></wrow><w><wrow><w></w><w>3</w><w>/</w><w>2</w></wrow></w></wsup></wrow></w></w></wfrac><w>,</w><wfrac><w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></w><w><w></w><w><wrow><w></w><w>4</w><w></w><w>π</w><w></w><wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wsup><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow><wb>)</wb></wrow><w><wrow><w></w><w>3</w><w>/</w><w>2</w></wrow></w></wsup></wrow></w></w></wfrac><w>,</w><wfrac><w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></w><w><w></w><w><wrow><w></w><w>4</w><w></w><w>π</w><w></w><wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wsup><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow><wb>)</wb></wrow><w><wrow><w></w><w>3</w><w>/</w><w>2</w></wrow></w></wsup></wrow></w></w></wfrac></wrow><wb>}</wb></wrow></wrow><w>,</w><wrow><w></w><wrow><w></w><wsup><w></w><w>p2</w><w><w class=\"small-symbol\"></w></w></wsup><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></w><w><w></w><w><wrow><w></w><w>4</w><w></w><w>π</w><w></w><wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wsup><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow><wb>)</wb></wrow><w><wrow><w></w><w>3</w><w>/</w><w>2</w></wrow></w></wsup></wrow></w></w></wfrac><w>,</w><wfrac><w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></w><w><w></w><w><wrow><w></w><w>4</w><w></w><w>π</w><w></w><wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wsup><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow><wb>)</wb></wrow><w><wrow><w></w><w>3</w><w>/</w><w>2</w></wrow></w></wsup></wrow></w></w></wfrac><w>,</w><wfrac><w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></w><w><w></w><w><wrow><w></w><w>4</w><w></w><w>π</w><w></w><wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wsup><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow><wb>)</wb></wrow><w><wrow><w></w><w>3</w><w>/</w><w>2</w></wrow></w></wsup></wrow></w></w></wfrac></wrow><wb>}</wb></wrow></wrow><w>,</w><wrow><w></w><wrow><w></w><wsup><w></w><w>p3</w><w><w class=\"small-symbol\"></w></w></wsup><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><wrow><w></w><wb>{</wb><wrow><w></w><wfrac><w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></w><w><w></w><w><wrow><w></w><w>4</w><w></w><w>π</w><w></w><wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wsup><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow><wb>)</wb></wrow><w><wrow><w></w><w>3</w><w>/</w><w>2</w></wrow></w></wsup></wrow></w></w></wfrac><w>,</w><wfrac><w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></w><w><w></w><w><wrow><w></w><w>4</w><w></w><w>π</w><w></w><wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wsup><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow><wb>)</wb></wrow><w><wrow><w></w><w>3</w><w>/</w><w>2</w></wrow></w></wsup></wrow></w></w></wfrac><w>,</w><wfrac><w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></w><w><w></w><w><wrow><w></w><w>4</w><w></w><w>π</w><w></w><wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wsup><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow><wb>)</wb></wrow><w><wrow><w></w><w>3</w><w>/</w><w>2</w></wrow></w></wsup></wrow></w></w></wfrac></wrow><wb>}</wb></wrow></wrow></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>0</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><w>0</w></wrow><w>,</w><wrow><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>0</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><w>0</w></wrow><w>,</w><wrow><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>0</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><wsup><w></w><w>5.&#215;10</w><w><w>-11</w></w></wsup></wrow><w>,</w><wrow><w></w><wrow><w></w><w>p1</w><wrow><w></w><wb>[</wb><w>0</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><w>0</w></wrow><w>,</w><wrow><w></w><wrow><w></w><w>p2</w><wrow><w></w><wb>[</wb><w>0</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><w>0</w></wrow><w>,</w><wrow><w></w><wrow><w></w><w>p3</w><wrow><w></w><wb>[</wb><w>0</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><wrow><w></w><w>-</w><wsup><w></w><w>1.8&#215;10</w><w><w>-21</w></w></wsup></wrow></wrow></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{{Derivative[1][r1][t] == {3*p1[t], 0, 0}, Derivative[1][r2][t] == {0, 3*p2[t], 0}, Derivative[1][r3][t] == {0, 0, 3*p3[t]}}, {Derivative[1][p1][t] == {r1[t]/(4*Pi*(r1[t]^2 + r2[t]^2 + r3[t]^2)^(3/2)), r2[t]/(4*Pi*(r1[t]^2 + r2[t]^2 + r3[t]^2)^(3/2)), r3[t]/(4*Pi*(r1[t]^2 + r2[t]^2 + r3[t]^2)^(3/2))}, Derivative[1][p2][t] == {r1[t]/(4*Pi*(r1[t]^2 + r2[t]^2 + r3[t]^2)^(3/2)), r2[t]/(4*Pi*(r1[t]^2 + r2[t]^2 + r3[t]^2)^(3/2)), r3[t]/(4*Pi*(r1[t]^2 + r2[t]^2 + r3[t]^2)^(3/2))}, Derivative[1][p3][t] == {r1[t]/(4*Pi*(r1[t]^2 + r2[t]^2 + r3[t]^2)^(3/2)), r2[t]/(4*Pi*(r1[t]^2 + r2[t]^2 + r3[t]^2)^(3/2)), r3[t]/(4*Pi*(r1[t]^2 + r2[t]^2 + r3[t]^2)^(3/2))}}, r1[0] == 0, r2[0] == 0, r3[0] == 5.000000000000001*^-11, p1[0] == 0, p2[0] == 0, p3[0] == -1.8*^-21}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "10c9a3d1-bcd0-4859-8627-106d219281de",
+     "metadata": {
+      "cellLabel": "Out[14]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Thread[r'[t]==]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><wrow><w></w><wsup><w></w><w>r1</w><w><w class=\"small-symbol\"></w></w></wsup><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><w>3</w><w></w><wrow><w></w><w>p1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></wrow><w>,</w><w>0</w><w>,</w><w>0</w></wrow><wb>}</wb></wrow></wrow><w>,</w><wrow><w></w><wrow><w></w><wsup><w></w><w>r2</w><w><w class=\"small-symbol\"></w></w></wsup><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><wrow><w></w><wb>{</wb><wrow><w></w><w>0</w><w>,</w><wrow><w></w><w>3</w><w></w><wrow><w></w><w>p2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></wrow><w>,</w><w>0</w></wrow><wb>}</wb></wrow></wrow><w>,</w><wrow><w></w><wrow><w></w><wsup><w></w><w>r3</w><w><w class=\"small-symbol\"></w></w></wsup><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><wrow><w></w><wb>{</wb><wrow><w></w><w>0</w><w>,</w><w>0</w><w>,</w><wrow><w></w><w>3</w><w></w><wrow><w></w><w>p3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></wrow></wrow><wb>}</wb></wrow></wrow></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{Derivative[1][r1][t] == {3*p1[t], 0, 0}, Derivative[1][r2][t] == {0, 3*p2[t], 0}, Derivative[1][r3][t] == {0, 0, 3*p3[t]}}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "cc12302c-00a8-4772-be94-805ac1f8c58e",
+     "metadata": {
+      "cellLabel": "Out[15]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Grad[Hre[p[t],r[t],t,I0,omega,phi0],p[t]]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><w>3</w><w></w><wrow><w></w><w>p1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></wrow><w>,</w><w>0</w><w>,</w><w>0</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><w>0</w><w>,</w><wrow><w></w><w>3</w><w></w><wrow><w></w><w>p2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></wrow><w>,</w><w>0</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><w>0</w><w>,</w><w>0</w><w>,</w><wrow><w></w><w>3</w><w></w><wrow><w></w><w>p3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></wrow></wrow><wb>}</wb></wrow></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{{3*p1[t], 0, 0}, {0, 3*p2[t], 0}, {0, 0, 3*p3[t]}}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "4126bc92-ca40-4646-982c-e52b8a915c71",
+     "metadata": {
+      "cellLabel": "Out[16]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Hre[p[t],r[t],t,I0,omega,phi0]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><wfrac><w><wrow><w></w><w>3</w><w></w><wsup><w></w><wrow><w></w><w>p1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow></w><w><w></w><w><w>2</w></w></w></wfrac><w>+</w><wfrac><w><w>1</w></w><w><w></w><w><wrow><w></w><w>4</w><w></w><w>π</w><w></w><wsqrt><w><w>\\</w></w><w></w><w><wrow><w></w><wsup><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow></w></wsqrt></wrow></w></w></wfrac></wrow><w>,</w><wrow><w></w><wfrac><w><wrow><w></w><w>3</w><w></w><wsup><w></w><wrow><w></w><w>p2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow></w><w><w></w><w><w>2</w></w></w></wfrac><w>+</w><wfrac><w><w>1</w></w><w><w></w><w><wrow><w></w><w>4</w><w></w><w>π</w><w></w><wsqrt><w><w>\\</w></w><w></w><w><wrow><w></w><wsup><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow></w></wsqrt></wrow></w></w></wfrac></wrow><w>,</w><wrow><w></w><wfrac><w><wrow><w></w><w>3</w><w></w><wsup><w></w><wrow><w></w><w>p3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow></w><w><w></w><w><w>2</w></w></w></wfrac><w>+</w><wfrac><w><w>1</w></w><w><w></w><w><wrow><w></w><w>4</w><w></w><w>π</w><w></w><wsqrt><w><w>\\</w></w><w></w><w><wrow><w></w><wsup><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow></w></wsqrt></wrow></w></w></wfrac></wrow></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{(3*p1[t]^2)/2 + 1/(4*Pi*Sqrt[r1[t]^2 + r2[t]^2 + r3[t]^2]), (3*p2[t]^2)/2 + 1/(4*Pi*Sqrt[r1[t]^2 + r2[t]^2 + r3[t]^2]), (3*p3[t]^2)/2 + 1/(4*Pi*Sqrt[r1[t]^2 + r2[t]^2 + r3[t]^2])}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "7c1dbb5b-7d16-4dfe-9b60-21877b341f22",
+     "metadata": {
+      "cellLabel": "Out[17]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "(Total[(pvec-qn*Avec[I0,omega,phi0])^2/(2 mn)]+1/(4*Pi*epsilon0*Sqrt[Total[rvec^2]]))/.{\r\npvec->p[t],rvec->r[t]}",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><wfrac><w><wrow><w></w><w>3</w><w></w><wsup><w></w><wrow><w></w><w>p1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow></w><w><w></w><w><w>2</w></w></w></wfrac><w>+</w><wfrac><w><w>1</w></w><w><w></w><w><wrow><w></w><w>4</w><w></w><w>π</w><w></w><wsqrt><w><w>\\</w></w><w></w><w><wrow><w></w><wsup><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow></w></wsqrt></wrow></w></w></wfrac></wrow><w>,</w><wrow><w></w><wfrac><w><wrow><w></w><w>3</w><w></w><wsup><w></w><wrow><w></w><w>p2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow></w><w><w></w><w><w>2</w></w></w></wfrac><w>+</w><wfrac><w><w>1</w></w><w><w></w><w><wrow><w></w><w>4</w><w></w><w>π</w><w></w><wsqrt><w><w>\\</w></w><w></w><w><wrow><w></w><wsup><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow></w></wsqrt></wrow></w></w></wfrac></wrow><w>,</w><wrow><w></w><wfrac><w><wrow><w></w><w>3</w><w></w><wsup><w></w><wrow><w></w><w>p3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow></w><w><w></w><w><w>2</w></w></w></wfrac><w>+</w><wfrac><w><w>1</w></w><w><w></w><w><wrow><w></w><w>4</w><w></w><w>π</w><w></w><wsqrt><w><w>\\</w></w><w></w><w><wrow><w></w><wsup><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow></w></wsqrt></wrow></w></w></wfrac></wrow></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{(3*p1[t]^2)/2 + 1/(4*Pi*Sqrt[r1[t]^2 + r2[t]^2 + r3[t]^2]), (3*p2[t]^2)/2 + 1/(4*Pi*Sqrt[r1[t]^2 + r2[t]^2 + r3[t]^2]), (3*p3[t]^2)/2 + 1/(4*Pi*Sqrt[r1[t]^2 + r2[t]^2 + r3[t]^2])}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "edc261ad-6050-4266-8ef0-31bc9c363467",
+     "metadata": {
+      "cellLabel": "Out[19]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Total[(p[t]-Avec1[I0,omega,phi0])^2/(2 mn)]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wfrac><w><wsup><w></w><wrow><w></w><w>p1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></w><w><w></w><w><w>2</w></w></w></wfrac><w>+</w><wfrac><w><wsup><w></w><wrow><w></w><w>p2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></w><w><w></w><w><w>2</w></w></w></wfrac><w>+</w><wrow><w></w><wfrac><w><w>1</w></w><w><w></w><w><w>2</w></w></w></wfrac><w></w><wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wrow><w></w><w>-</w><wfrac><w><wrow><w></w><wsqrt><w><w>\\</w></w><w></w><w><w>2</w></w></wsqrt><w></w><wsqrt><w><w>\\</w></w><w></w><w><w>I0</w></w></wsqrt><w></w><wrow><w></w><w>Cos</w><wrow><w></w><wb>[</wb><wrow><w></w><w>phi0</w><w>+</w><wrow><w></w><w>omega</w><w></w><w>t</w></wrow></wrow><wb>]</wb></wrow></wrow></wrow></w><w><w></w><w><w>omega</w></w></w></wfrac></wrow><w>+</w><wrow><w></w><w>p3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></wrow><wb>)</wb></wrow><w><w>2</w></w></wsup></wrow></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "p1[t]^2/2 + p2[t]^2/2 + (-((Sqrt[2]*Sqrt[I0]*Cos[phi0 + omega*t])/omega) + p3[t])^2/2",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "4a63351e-0b86-4ab1-8770-d7110b396984",
+     "metadata": {
+      "cellLabel": "Out[60]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "1/(4*Pi*epsilon0*Sqrt[Total[rvec^2]])/.{\r\npvec->p[t],rvec->r[t]}",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wfrac><w><w>1</w></w><w><w></w><w><wrow><w></w><w>4</w><w></w><w>π</w><w></w><wsqrt><w><w>\\</w></w><w></w><w><wrow><w></w><wsup><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow></w></wsqrt></wrow></w></w></wfrac></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "1/(4*Pi*Sqrt[r1[t]^2 + r2[t]^2 + r3[t]^2])",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "14b8c4bf-7642-4a30-9d76-1dd18f925338",
+     "metadata": {
+      "cellLabel": "Out[57]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "(Total[(pvec-10)^2/(2 mn)])/.{\r\npvec->p[t],rvec->r[t]}",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wrow><w></w><wfrac><w><w>1</w></w><w><w></w><w><w>2</w></w></w></wfrac><w></w><wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wrow><w></w><w>-</w><w>10</w></wrow><w>+</w><wrow><w></w><w>p1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></wrow><wb>)</wb></wrow><w><w>2</w></w></wsup></wrow><w>+</w><wrow><w></w><wfrac><w><w>1</w></w><w><w></w><w><w>2</w></w></w></wfrac><w></w><wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wrow><w></w><w>-</w><w>10</w></wrow><w>+</w><wrow><w></w><w>p2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></wrow><wb>)</wb></wrow><w><w>2</w></w></wsup></wrow><w>+</w><wrow><w></w><wfrac><w><w>1</w></w><w><w></w><w><w>2</w></w></w></wfrac><w></w><wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wrow><w></w><w>-</w><w>10</w></wrow><w>+</w><wrow><w></w><w>p3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></wrow><wb>)</wb></wrow><w><w>2</w></w></wsup></wrow></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "(-10 + p1[t])^2/2 + (-10 + p2[t])^2/2 + (-10 + p3[t])^2/2",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "f6e2dfe4-32f7-4621-8d72-e0c717333435",
+     "metadata": {
+      "cellLabel": "Out[58]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Hre[t_,I0_,omega_,phi0_]=\r\nTotal[(p[t]-qn*Avec1[I0,omega,phi0])^2/(2 mn)]+1/(4*Pi*epsilon0*Sqrt[Total[r[t]^2]]);\r\n(*set hamiltonian equations这个和上面的哈密顿量形式无关，所以分开写*)\r\nHalmitonEq[I0_,omega_,phi0_,r10_,r20_,r30_,p10_,p20_,p30_]=\r\n{           Thread[r'[t]==Grad[Hre[t,I0,omega,phi0],p[t]]],\r\n            Thread[p'[t]==-Grad[Hre[t,I0,omega,phi0],r[t]]],\r\n    (*初态*) r1[0]==r10,r2[0]==r20,r3[0]==r30,\r\n            p1[0]==p10,p2[0]==p20,p3[0]==p30\r\n};",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Thread[r'[t]==Grad[Hre[t,I0,omega,phi0],p[t]]]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><wrow><w></w><wsup><w></w><w>r1</w><w><w class=\"small-symbol\"></w></w></wsup><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><wrow><w></w><w>p1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></wrow><w>,</w><wrow><w></w><wrow><w></w><wsup><w></w><w>r2</w><w><w class=\"small-symbol\"></w></w></wsup><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><wrow><w></w><w>p2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></wrow><w>,</w><wrow><w></w><wrow><w></w><wsup><w></w><w>r3</w><w><w class=\"small-symbol\"></w></w></wsup><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><wrow><w></w><wrow><w></w><w>-</w><wfrac><w><wrow><w></w><wsqrt><w><w>\\</w></w><w></w><w><w>2</w></w></wsqrt><w></w><wsqrt><w><w>\\</w></w><w></w><w><w>I0</w></w></wsqrt><w></w><wrow><w></w><w>Cos</w><wrow><w></w><wb>[</wb><wrow><w></w><w>phi0</w><w>+</w><wrow><w></w><w>omega</w><w></w><w>t</w></wrow></wrow><wb>]</wb></wrow></wrow></wrow></w><w><w></w><w><w>omega</w></w></w></wfrac></wrow><w>+</w><wrow><w></w><w>p3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></wrow></wrow></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{Derivative[1][r1][t] == p1[t], Derivative[1][r2][t] == p2[t], Derivative[1][r3][t] == -((Sqrt[2]*Sqrt[I0]*Cos[phi0 + omega*t])/omega) + p3[t]}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "c073a9c7-738a-4d52-a58f-181d737f3a9d",
+     "metadata": {
+      "cellLabel": "Out[76]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Thread[p'[t]==-Grad[Hre[t,I0,omega,phi0],r[t]]]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><wrow><w></w><wsup><w></w><w>p1</w><w><w class=\"small-symbol\"></w></w></wsup><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><wfrac><w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></w><w><w></w><w><wrow><w></w><w>4</w><w></w><w>π</w><w></w><wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wsup><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow><wb>)</wb></wrow><w><wrow><w></w><w>3</w><w>/</w><w>2</w></wrow></w></wsup></wrow></w></w></wfrac></wrow><w>,</w><wrow><w></w><wrow><w></w><wsup><w></w><w>p2</w><w><w class=\"small-symbol\"></w></w></wsup><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><wfrac><w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></w><w><w></w><w><wrow><w></w><w>4</w><w></w><w>π</w><w></w><wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wsup><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow><wb>)</wb></wrow><w><wrow><w></w><w>3</w><w>/</w><w>2</w></wrow></w></wsup></wrow></w></w></wfrac></wrow><w>,</w><wrow><w></w><wrow><w></w><wsup><w></w><w>p3</w><w><w class=\"small-symbol\"></w></w></wsup><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w class=\"symbol\"></w><wfrac><w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></w><w><w></w><w><wrow><w></w><w>4</w><w></w><w>π</w><w></w><wsup><w></w><wrow><w></w><wb>(</wb><wrow><w></w><wsup><w></w><wrow><w></w><w>r1</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r2</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w>+</w><wsup><w></w><wrow><w></w><w>r3</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></wrow><wb>)</wb></wrow><w><wrow><w></w><w>3</w><w>/</w><w>2</w></wrow></w></wsup></wrow></w></w></wfrac></wrow></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{Derivative[1][p1][t] == r1[t]/(4*Pi*(r1[t]^2 + r2[t]^2 + r3[t]^2)^(3/2)), Derivative[1][p2][t] == r2[t]/(4*Pi*(r1[t]^2 + r2[t]^2 + r3[t]^2)^(3/2)), Derivative[1][p3][t] == r3[t]/(4*Pi*(r1[t]^2 + r2[t]^2 + r3[t]^2)^(3/2))}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "b9f293d5-ddeb-4d0b-819e-a48e84c929cc",
+     "metadata": {
+      "cellLabel": "Out[77]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}
