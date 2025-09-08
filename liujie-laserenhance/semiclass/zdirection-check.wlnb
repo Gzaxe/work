@@ -22,14 +22,7 @@
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1756087484722,
-     "endTime": 1756087486840
-    },
-    "executionOrder": 41,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -63,14 +56,7 @@
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1756087747547,
-     "endTime": 1756087748053
-    },
-    "executionOrder": 86,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -78,14 +64,7 @@
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1756087748850,
-     "endTime": 1756087749324
-    },
-    "executionOrder": 92,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -111,14 +90,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1756087750928,
-     "endTime": 1756087751186
-    },
-    "executionOrder": 98,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -144,14 +116,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1756087767889,
-     "endTime": 1756087768166
-    },
-    "executionOrder": 101,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -194,14 +159,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1756087858399,
-     "endTime": 1756087858723
-    },
-    "executionOrder": 105,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -227,14 +185,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1756087832340,
-     "endTime": 1756087832578
-    },
-    "executionOrder": 102,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -286,14 +237,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1756087502058,
-     "endTime": 1756087502311
-    },
-    "executionOrder": 82,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -301,14 +245,7 @@
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1756087910259,
-     "endTime": 1756087910741
-    },
-    "executionOrder": 107,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -334,14 +271,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1756087956526,
-     "endTime": 1756087956782
-    },
-    "executionOrder": 117,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -367,14 +297,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1756087977295,
-     "endTime": 1756087977490
-    },
-    "executionOrder": 118,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -400,14 +323,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1756087575106,
-     "endTime": 1756087575282
-    },
-    "executionOrder": 84,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -433,14 +349,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1756087657981,
-     "endTime": 1756087658196
-    },
-    "executionOrder": 85,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
