@@ -14,14 +14,15 @@
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1757314269276,
-     "endTime": 1757314271447
-    },
-    "executionOrder": 134,
-    "success": true
-   }
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "(*参数设置与选取\r\nIo->10^(24)\r\nomega->10eV*1.51859*10^(15)\r\nphi0->这个可以随便取，就Pi/2好了先\r\nr和p都沿z方向，\r\nrmod=0.05*10^(-9)\r\npmod=-1.8*10^(-21)p是冲z负方向的记着加负号。\r\nt一定是变量，不是参数\r\nt0->6Pi/omega->1.24*10^(-15),t1->10^(-14)\r\n6Pi/(10*1.51859*10^(15))*)",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -29,14 +30,7 @@
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1757314273109,
-     "endTime": 1757314274099
-    },
-    "executionOrder": 159,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -62,14 +56,7 @@
     }
    ],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1757314276161,
-     "endTime": 1757314276416
-    },
-    "executionOrder": 171,
-    "success": true
-   }
+   "executionSummary": {}
   },
   {
    "kind": 2,
@@ -77,14 +64,7 @@
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {
-    "timing": {
-     "startTime": 1757313890890,
-     "endTime": 1757313891463
-    },
-    "executionOrder": 127,
-    "success": true
-   }
+   "executionSummary": {}
   }
  ]
 }
