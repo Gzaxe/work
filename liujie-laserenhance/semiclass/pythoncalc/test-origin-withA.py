@@ -1,4 +1,4 @@
-#测试计算约化问题
+#测试计算原始参数，fig3-a-phase1
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
@@ -52,7 +52,7 @@ class CoulombPotentialParticle:
     def equations_of_motion(self, t, y):
         """哈密顿方程"""
         x, p = y
-        dxdt = p / self.m 
+        dxdt = p / self.m + 28.9176 * np.sin(1.51859 *10**(18) * t) * np.sin(1.26549 *10**17 * t)**2
         dpdt = self.force(x)
         return np.array([dxdt, dpdt])
     
@@ -178,14 +178,14 @@ class CoulombPotentialParticle:
 # 示例使用
 if __name__ == "__main__":
     # 创建模拟器实例
-    simulator = CoulombPotentialParticle(k=0.23019, m=0.2, q=1.0, Q=1.0)
+    simulator = CoulombPotentialParticle(k=2.3019*10**(-28), m=2*10**(-27), q=1.0, Q=1.0)
     
     # 设置初始条件
-    x0 = 5.0  # 初始位置
-    p0 = -1.8 # 初始动量
+    x0 = 5.0*10**(-11)  # 初始位置
+    p0 = -1.79*10**(-21 ) # 初始动量
     
     # 运行模拟
-    t, x, p, energy = simulator.simulate(x0, p0, t_start=0, t_max=1, num_points=2000)
+    t, x, p, energy = simulator.simulate(x0, p0, t_start=0, t_max=1.24125*10**(-17), num_points=2000)
     
     # 绘制结果
     simulator.plot_results(t, x, p, energy, save_path="coulomb_potential_results.png")
@@ -197,7 +197,7 @@ if __name__ == "__main__":
     print(f"能量变化: {energy_change:.6e}")
     print(f"相对能量变化: {energy_change/energy[0]:.6e}")
 
-    # 创建DataFrame
+ # 创建DataFrame
 df = pd.DataFrame({
     'time': t,
     'position_x': x,
@@ -206,7 +206,7 @@ df = pd.DataFrame({
 #指定路径，默认路径奇怪
 save_dir = "D:/work/liujie-laserenhance/data/semiclass/"
 # 保存为CSV
-df.to_csv(save_dir + 'simulation_results_pandas.csv', index=False)
+df.to_csv(save_dir + 'fig3-a-phase1-origin.csv', index=False)
 
 # 保存为Excel（需要安装openpyxl）
 # df.to_excel('simulation_results.xlsx', index=False)

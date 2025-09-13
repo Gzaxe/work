@@ -1,0 +1,46 @@
+{
+ "cells": [
+  {
+   "kind": 2,
+   "value": "A0=Sqrt[2*I0/(epsilon0*c0)]/omega;\r\nfn1[t_]=Sin[omega*t/12]^(2);\r\nfn2[t_]=1;\r\nAvec1={0,0,A0*fn1[t]*Cos[omega*t+phi0]};\r\nAvec2={0,0,A0*fn2[t]*Cos[omega*t+phi0]};",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Curl[Avec1,{x,y,z}]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><w>0</w><w>,</w><w>0</w><w>,</w><w>0</w></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{0, 0, 0}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "3d85040b-ad77-443b-bf3a-aff8845c4e07",
+     "metadata": {
+      "cellLabel": "Out[6]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}

@@ -1,0 +1,132 @@
+{
+ "cells": [
+  {
+   "kind": 2,
+   "value": "mu0=4*Pi*10^(-7);\r\nc0=3*10^8;\r\nmn=2*10^(-27);\r\nepsilon0=8.85*10^(-12);\r\nqn=1.6*10^(-19)/5;\r\ne0=1.6*10^(-19);\r\nA0=Sqrt[2*I0/(epsilon0*c0)]/omega;\r\nfn1[t_]=Sin[omega*t/12]^(2);\r\nfn2[t_]=1;\r\nAsca1[I0_,omega_,phi0_]=A0*fn1[t]*Cos[omega*t+phi0];\r\nAsca2[I0_,omega_,phi0_]=A0*fn2[t]*Cos[omega*t+phi0];\r\n(*set hamiltonian*)\r\n(*第1段，t<6Pi/omega*)\r\nHre1[t_,I0_,omega_,phi0_]=\r\n(p[t]-qn*Asca1[I0,omega,phi0])^2/(2 mn)+(e0)^2/(4*Pi*epsilon0*Sqrt[r[t]^2]);\r\n(*set hamiltonian equations这个和上面的哈密顿量形式无关，所以分开写*)\r\nHalmitonEq1[I0_,omega_,phi0_,r0_,p0_]=\r\n{           r'[t]==D[Hre1[t,I0,omega,phi0],p[t]],\r\n            p'[t]==-D[Hre1[t,I0,omega,phi0],r[t]],\r\n    (*初态*) r[0]==r0,p[0]==p0\r\n};\r\n(*数值计算，作为参数的函数*)\r\nsol1[I0_,omega_,phi0_,r0_,p0_]:=\r\nNDSolve[HalmitonEq1[I0,omega,phi0,r0,p0],{r[t],p[t]},{t,0,6*Pi/omega},\r\nMethod -> {\"ImplicitRungeKutta\", \"DifferenceOrder\" -> 4}];\r\n(*提取计算给出的结果*)\r\nr1Sol1[I0_,omega_,phi0_,r0_,p0_]:=sol1[I0,omega,phi0,r0,p0][[1,1,2]]/.{t->6*Pi/omega};\r\np1Sol1[I0_,omega_,phi0_,r0_,p0_]:=sol1[I0,omega,phi0,r0,p0][[1,2,2]]/.{t->6*Pi/omega};\r\n(*第2段，t>6Pi/omega,第二段需要用第一段的末态作为初始条件*)\r\nHre2[t_,I0_,omega_,phi0_]=\r\n(p[t]-qn*Asca2[I0,omega,phi0])^2/(2 mn)+(e0)^2/(4*Pi*epsilon0*Sqrt[r[t]^2]);\r\n(*set hamiltonian equations这个和上面的哈密顿量形式无关，所以分开写*)\r\nHalmitonEq2[I0_,omega_,phi0_,r1_,p1_]=\r\n{         r'[t]==D[Hre2[t,I0,omega,phi0],p[t]],\r\n            p'[t]==-D[Hre2[t,I0,omega,phi0],r[t]],\r\n    (*初态*) r[6*Pi/omega]==r1,p[6*Pi/omega]==p1\r\n};\r\n(*数值计算，作为参数的函数*)\r\nsol2[I0_,omega_,phi0_,t1_,r0_,p0_]:=\r\nNDSolve[HalmitonEq2[I0,omega,phi0,r1Sol1[I0,omega,phi0,r0,p0],p1Sol1[I0,omega,phi0,r0,p0]],{r[t],p[t]},{t,6*Pi/omega,t1},\r\nMethod ->{\"ImplicitRungeKutta\", \"DifferenceOrder\" -> 4}];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "r'[t]==D[Hre2[t,I0,omega,phi0],p[t]]\r\np'[t]==-D[Hre2[t,I0,omega,phi0],r[t]]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Expand[D[Hre2[t,I0,omega,phi0],p[t]]]/.{I0->10^(32),omega->1000*1.51859*10^(15),phi0->Pi/2}",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wrow><w></w><w>500000000000000000000000000</w><w></w><wrow><w></w><w>p</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></wrow><w>+</w><wrow><w></w><wsup><w></w><w>2.89176&#215;10</w><w><w>6</w></w></wsup><w></w><wrow><w></w><w>Sin</w><wrow><w></w><wb>[</wb><wrow><w></w><wsup><w></w><w>1.51859&#215;10</w><w><w>18</w></w></wsup><w></w><w>t</w></wrow><wb>]</wb></wrow></wrow></wrow></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "500000000000000000000000000*p[t] + 2.891759573789258*^6*Sin[1.5185900000000003*^18*t]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "1ca45666-549a-4b80-901e-3dd8e6598191",
+     "metadata": {
+      "cellLabel": "Out[20]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Expand[-D[Hre2[t,I0,omega,phi0],r[t]]]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wfrac><w><wrow><w></w><wsup><w></w><w>2.3019&#215;10</w><w><w>-28</w></w></wsup><w></w><wsqrt><w><w>\\</w></w><w></w><w><wsup><w></w><wrow><w></w><w>r</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup></w></wsqrt></wrow></w><w><w></w><w><wsup><w></w><wrow><w></w><w>r</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow><w><w>3</w></w></wsup></w></w></wfrac></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "(2.301902001781086*^-28*Sqrt[r[t]^2])/r[t]^3",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "3db003e1-1452-4854-b95b-6c81fb8dd872",
+     "metadata": {
+      "cellLabel": "Out[21]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Expand[D[Hre1[t,I0,omega,phi0],p[t]]]/.{I0->10^(32),omega->1000*1.51859*10^(15),phi0->Pi/2}",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wrow><w></w><w>500000000000000000000000000</w><w></w><wrow><w></w><w>p</w><wrow><w></w><wb>[</wb><w>t</w><wb>]</wb></wrow></wrow></wrow><w>+</w><wrow><w></w><wsup><w></w><w>2.89176&#215;10</w><w><w>6</w></w></wsup><w></w><wsup><w></w><wrow><w></w><w>Sin</w><wrow><w></w><wb>[</wb><wrow><w></w><wsup><w></w><w>1.26549&#215;10</w><w><w>17</w></w></wsup><w></w><w>t</w></wrow><wb>]</wb></wrow></wrow><w><w>2</w></w></wsup><w></w><wrow><w></w><w>Sin</w><wrow><w></w><wb>[</wb><wrow><w></w><wsup><w></w><w>1.51859&#215;10</w><w><w>18</w></w></wsup><w></w><w>t</w></wrow><wb>]</wb></wrow></wrow></wrow></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "500000000000000000000000000*p[t] + 2.891759573789258*^6*Sin[1.2654916666666669*^17*t]^2*Sin[1.5185900000000003*^18*t]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "f3bade69-eed7-46c6-b20d-4f9199df991b",
+     "metadata": {
+      "cellLabel": "Out[21]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Sqrt[5*1000*1.60217*10^(-19)*4*10^(-27)]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wsup><w></w><w>1.79007&#215;10</w><w><w>-21</w></w></wsup></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "1.7900670378508177*^-21",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "0c8a7224-5719-49ef-895a-98a0d5af6a12",
+     "metadata": {
+      "cellLabel": "Out[25]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}

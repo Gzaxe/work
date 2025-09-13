@@ -52,7 +52,7 @@ class CoulombPotentialParticle:
     def equations_of_motion(self, t, y):
         """哈密顿方程"""
         x, p = y
-        dxdt = p / self.m 
+        dxdt = p / self.m + 28.9176 * np.sin(151.859 * t) * np.sin(12.6549 * t)**2
         dpdt = self.force(x)
         return np.array([dxdt, dpdt])
     
@@ -185,7 +185,7 @@ if __name__ == "__main__":
     p0 = -1.8 # 初始动量
     
     # 运行模拟
-    t, x, p, energy = simulator.simulate(x0, p0, t_start=0, t_max=1, num_points=2000)
+    t, x, p, energy = simulator.simulate(x0, p0, t_start=0, t_max=0.124125, num_points=2000)
     
     # 绘制结果
     simulator.plot_results(t, x, p, energy, save_path="coulomb_potential_results.png")
@@ -197,7 +197,7 @@ if __name__ == "__main__":
     print(f"能量变化: {energy_change:.6e}")
     print(f"相对能量变化: {energy_change/energy[0]:.6e}")
 
-    # 创建DataFrame
+ # 创建DataFrame
 df = pd.DataFrame({
     'time': t,
     'position_x': x,
@@ -206,7 +206,7 @@ df = pd.DataFrame({
 #指定路径，默认路径奇怪
 save_dir = "D:/work/liujie-laserenhance/data/semiclass/"
 # 保存为CSV
-df.to_csv(save_dir + 'simulation_results_pandas.csv', index=False)
+df.to_csv(save_dir + 'fig3-a-phase1.csv', index=False)
 
 # 保存为Excel（需要安装openpyxl）
 # df.to_excel('simulation_results.xlsx', index=False)
