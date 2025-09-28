@@ -1,0 +1,111 @@
+{
+ "cells": [
+  {
+   "kind": 2,
+   "value": "Solve[Na==3*NB*Np*sig/(2*Pi*r0^2),sig]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><wb>{</wb><wrow><w></w><w>sig</w><w class=\"symbol\"></w><wfrac><w><wrow><w></w><w>2</w><w></w><w>Na</w><w></w><w>π</w><w></w><wsup><w></w><w>r0</w><w><w>2</w></w></wsup></wrow></w><w><w></w><w><wrow><w></w><w>3</w><w></w><w>NB</w><w></w><w>Np</w></wrow></w></w></wfrac></wrow><wb>}</wb></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{{sig -> (2*Na*Pi*r0^2)/(3*NB*Np)}}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "b87abc57-cf79-4c51-a7f9-1c376ccdab16",
+     "metadata": {
+      "cellLabel": "Out[2]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1759019167705,
+     "endTime": 1759019167888
+    },
+    "executionOrder": 2,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "2*Na*Pi*r0^2/(3*NB*Np)*10^(28)/.{Na->4*Pi/3*1.5*10^10,Np->2.7*10^12,NB->3.53*10^14,r0->0.5*10^(-3)}",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>345176.</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "345175.54650051956",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "9a525fc1-01a1-46e7-a837-ac5b4d33d657",
+     "metadata": {
+      "cellLabel": "Out[4]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1759019296904,
+     "endTime": 1759019297096
+    },
+    "executionOrder": 4,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "2*Na*Pi*r0^2/(3*NB*Np)*10^(28)/.{Na->4*Pi/3*1.5*10^10,Np->2.7*10^12,NB->7.5*10^16,r0->0.5*10^(-3)}",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>1624.63</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "1624.6262388624457",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "f17df78a-a07a-4e6c-a84f-cf42bbfdb064",
+     "metadata": {
+      "cellLabel": "Out[5]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1759019338112,
+     "endTime": 1759019338284
+    },
+    "executionOrder": 5,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}
